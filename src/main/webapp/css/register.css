@@ -1,0 +1,50 @@
+.colorMy{
+    color:#5dd5c8;
+}
+.container-fluid{
+    zoom: 1;
+}
+.header{
+    /*position: absolute;*/
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 500px;
+    height: 600px;
+    margin: auto;
+    background-color: white;
+}
+body{
+    background-image: url("/images/register-back.jpg");
+}
+.form-control{
+    margin-left: 50px;
+    width:405px;
+}
+.btn{
+    width: 150px;
+    margin-left: 50px;
+}
+#mpanel4{
+    display:none;
+    margin-left: 50px;
+}
+.right-buttom{
+    width: 130px;
+    height: 22px;
+    margin-left: 290px;
+}
+.right-buttom>a{
+    text-decoration: none;
+}
+.right-buttom>a:hover{
+    color: #51A9D7;
+    cursor: pointer;
+}
+/*.btnChoose1{*/
+    /*margin-left: 50px;*/
+/*}*/
+/*.btnChoose2{*/
+    /*margin-right: 50px;*/
+/*}*/
