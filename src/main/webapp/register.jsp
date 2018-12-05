@@ -18,51 +18,8 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/verify.js"></script>
-    <%--<script type="text/javascript" src="js/register.js"></script>--%>
+    <script type="text/javascript" src="js/register.js"></script>
     <script>
-        $(function () {
-            $(".btnChoose1").click(function () {
-                $(this).addClass("btn-info").removeClass("btn-default")
-                $(".btnChoose2").removeClass("btn-info").addClass("btn-default")
-            })
-            $(".btnChoose2").click(function () {
-                $(this).addClass("btn-info").removeClass("btn-default")
-                $(".btnChoose1").removeClass("btn-info").addClass("btn-default")
-            })
-            $(".control").click(function () {
-                $(".control").hide()
-                $("#mpanel4").show()
-            })
-            $('#mpanel4').slideVerify({
-                type : 2,		//类型
-                vOffset : 5,	//误差量，根据需求自行调整
-                vSpace : 5,	//间隔
-                imgName : ['1.jpg', '2.jpg'],
-                imgSize : {
-                    width: '400px',
-                    height: '200px',
-                },
-                blockSize : {
-                    width: '40px',
-                    height: '40px',
-                },
-                barSize : {
-                    width : '400px',
-                    height : '40px',
-                },
-                ready : function() {
-                },
-                success : function() {
-                    alert('验证成功！');
-                    $("#mpanel4").hide()
-                    //......后续操作
-                },
-                error : function() {
-//		        	alert('验证失败！');
-                }
-
-            });
-        })
     </script>
 </head>
 <body>
@@ -77,8 +34,9 @@
             </div>
         </div>
         <br><br><br><br>
-        <form method="post" action="#" class="form-horizontal form-register center-block">
-
+        <form method="post" action="/register.do" class="form-horizontal form-register center-block" onsubmit="return checkForm(this);">
+            <input type="text" style="display: none" class="cheking" name="checking" value="0">
+            <input type="text" style="display: none" class="userKind" name="userKind" value="puser">
             <div class="form-group">
                 <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
                 <div class="col-sm-10">
@@ -90,26 +48,26 @@
             <div class="form-group">
                 <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="username" placeholder="用户名">
+                    <input type="username" class="form-control" id="username" name="username" placeholder="用户名">
                 </div>
             </div>
             <div class="form-group" id="mpanel4">
             </div>
             <div class="form-group">
                 <div class="col-sm-10">
-                    <input type="button" class="control form-control" value="点击进行验证" style="">
+                    <input type="button" class="control controlCursor form-control" value="点击进行验证（图片右上角刷新）" style="">
                 </div>
             </div>
             <div class="form-group">
                 <%--<label for="inputPassword3" class="col-sm-2 control-label"></label>--%>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="密码">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="密码">
                 </div>
             </div>
             <div class="form-group">
                 <%--<label for="inputPassword3" class="col-sm-2 control-label"></label>--%>
                 <div class="col-sm-10">
-                    <input type="submit" class="form-control" id="" value="注册">
+                    <input type="submit" class="controlCursor form-control colorMy" id="" value="注册">
                 </div>
             </div>
         </form>
