@@ -1,0 +1,37 @@
+*{margin: 0;padding: 0;
+    list-style: none;}
+
+.guide{
+       background: #5dd5c8;
+}
+.header{
+    width: 800px;
+    height: 1000px;
+    margin-left:350px ;
+}
+.head {
+    width:800px;
+    height: 50px;
+    position:absolute;
+    margin-left:250px;margin-top:30px;
+    }
+.xinxi{
+    width:800px;
+    height: 50px;
+    position:absolute;
+    margin-left:110px;margin-top:90px;
+}
+.from1 {
+    width: 800px;
+    height: 700px;
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 130px;
+    background: white;
+}
+.form_datetime{
+    margin-top: 10px;
+    margin-left: 150px;
+}
+
+
