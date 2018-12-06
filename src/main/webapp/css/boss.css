@@ -1,0 +1,347 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+.all{
+    background-color: rgb(246,246,248);
+}
+.header{
+    width: 100%;
+    height: 49px;
+    background-color: black;
+    position: relative;
+}
+.top{
+    width: 1000px;
+    height: 49px;
+    /* background-color: red; */
+    margin: 0 auto;
+}
+.logo{
+    width: 110px;
+    height: 36px;
+    position: relative;
+    top: 10px;
+    margin: auto;
+    float: left;
+    font-size: 20px;
+    font-family: "黑体";
+    color: rgb(0,215,198);
+    cursor: pointer;
+}
+.box{
+    width: 38px;
+    height: 49px;
+    margin-left: 40px;
+    margin-top: 15px;
+    float: left;
+    color: rgb(236,240,241);
+    font-size: 14px;
+    cursor: pointer;
+}
+.box1{
+    width: 38px;
+    height: 49px;
+    margin-left: 40px;
+    margin-top: 15px;
+    float: left;
+    color: rgb(0,215,198);
+    font-size: 14px;
+    cursor: pointer;
+}
+.top1{
+    width: 306px;
+    height: 49px;
+    /* background-color: blue; */
+    /* margin: 0 auto; */
+    float: right;
+}
+.box2{
+    width: 65px;
+    height: 20px;
+    margin-left: 10px;
+    margin-top: 15px;
+    float: left;
+    color: rgb(236,240,241);
+    font-size: 14px;
+    cursor: pointer;
+}
+.box3{
+    width: 50px;
+    height: 25px;
+    margin-top: 15px;
+    float: right;
+    color: rgb(236,240,241);
+    font-size: 14px;
+}
+div.box:hover,div.box2:hover,div.box3:hover{
+    color: rgb(0,215,198);
+}
+.button{
+    width: 40px;
+    background-color: black;
+    border-style:solid;
+    border-width: 1px;
+    border-color: rgb(93,213,200);
+    border-radius:0.5em;
+    cursor: pointer;
+    /* border-bottom-right-radius:0.5em;  */
+}
+.sou{
+    width: 708px;
+    height: 122px;
+    /* background-color:yellow; */
+    margin: 0 auto;
+}
+.sou1{
+    width: 708px;
+    height: 44px;
+    /* background-color: red; */
+    position: absolute;
+    margin-top: 20px;
+}
+.city{
+    width: 96px;
+    height: 44px;
+    /* background-color: green; */
+    float: left;
+}
+.city select option{
+    width: 150px;
+}
+select {
+    width: 70px;
+    height: 37px;
+    padding: 0 0 0 20px;
+}
+
+.sou2{
+    width: 345px;
+    height: 42px;
+    /* background-color: blue; */
+    float: left;
+    margin-left: 5px;
+    margin-top: 1px;
+}
+.logo1 {
+    width: 90px;
+    height: 44px;
+    /* background-color: green; */
+    float: right;
+    background-image: url(../images/sou.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.work{
+    width: 90px;
+    height: 44px;
+    /* background-color: blue; */
+    float: right;
+    margin-right: 10px;
+}
+.zhiwei{
+    width: 708px;
+    height: 58px;
+    /* background-color: blueviolet; */
+    position: absolute;
+    margin-top: 64px;
+}
+a,b{
+    font-size: 14px;
+    text-decoration: none;
+    line-height: 58px;
+}
+.carousel{
+    width: 800px;
+    height: 600px;
+    position: absolute;
+    margin: 0 auto;
+}
+.zhaopin{
+    width: 1000px;
+    height: 438px;
+    /* background-color: brown; */
+    position: relative;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.zhaopin1{
+    width: 333.33px;
+    height: 131px;
+    border-right: solid 2px rgb(240, 240,248);
+    border-bottom: solid 2px rgb(240, 240,248);
+    background-color:white;
+    float: left;
+    cursor: pointer;
+}
+.zhaopin1:nth-child(3),.zhaopin1:nth-child(6),.zhaopin1:nth-child(9){
+    border-right: none;
+}
+.zhaopin1:nth-child(7),.zhaopin1:nth-child(8),.zhaopin1:nth-child(9){
+    border-bottom: none;
+}
+.zhaopin1:hover,.com1:hover{
+    box-shadow: 2px 4px 5px black;
+}
+.zhaopin1-1{
+    width: 333.33px;
+    height: 81px;
+    /* background-color: red; */
+}
+
+.zhaopin1-2{
+    width: 333.33px;
+    height: 51px;
+    /* background-color: green; */
+}
+.company{
+    width: 290px;
+    height: 35px;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 21px;
+    /* background-color: aqua; */
+    font-size: 15px;
+}
+.company1{
+    float: right;
+}
+.money{
+    width: 290px;
+    height: 36px;
+    position: absolute;
+    margin-top: 45px;
+    margin-left: 21px;
+    /* background-color: blueviolet; */
+    font-size: 15px;
+}
+.hr{
+    width: 290px;
+    height: 35px;
+    position: absolute;
+    margin-top: 8px;
+    margin-left: 21px;
+    /* background-color: yellow; */
+    font-size: 15px;
+}
+.com{
+    width: 1000px;
+    height: 280px;
+    /* background-color: blue; */
+    margin: 0 auto;
+    margin-top: 40px;
+}
+.com1{
+    width: 250px;
+    height: 140px;
+    border-right: solid 2px rgb(240, 240,248);
+    border-bottom: solid 2px rgb(240, 240,248);
+    background-color:white;
+    float: left;
+    cursor: pointer;
+}
+.com:nth-child(4),.com:nth-child(8){
+    border-right: none;
+}
+.com:nth-child(6),.com:nth-child(7),.com:nth-child(8),.com:nth-child(5){
+    border-bottom: none;
+}
+.com1-1,.com1-2,.com1-3{
+    width: 140px;
+    height: 25px;
+    position: absolute;
+    margin-top: 25px;
+    margin-left: 21px;
+    /* background-color: yellow; */
+    font-size: 15px;
+}
+.com1-2{
+    margin-top: 60px;
+}
+.com1-3{
+    margin-top: 95px;
+}
+.bottom{
+    width: 100%;
+    height: 136px;
+    /* background-color: chartreuse; */
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.bottom1{
+    width: 1000px;
+    height: 136px;
+    /* background-color: red; */
+    position: relative;
+    margin: 0 auto;
+}
+.bottom1-1{
+    width: 650px;
+    height: 136px;
+    /* background-color: green; */
+    float: left;
+}
+td{
+    width: 235px;
+    height: 15px;
+    align:left;
+}
+.word1:hover{
+    color: rgb(0,158, 182);
+}
+.word{
+    font-size: 14px;
+    cursor: pointer;
+}
+.word1{
+    font-size: 12px;
+    cursor: pointer;
+}
+.bottom1-2{
+    width: 350px;
+    height: 136px;
+    /* background-color: darkgoldenrod; */
+    float: right;
+}
+.bottom1-2-1,.bottom1-2-2,.bottom1-2-3{
+    width: 270px;
+    height: 26px;
+    /* background-color: aqua; */
+    float: right;
+    font-size: 14px;
+    text-align: right;
+}
+.bottom1-2-1{
+    margin-top: 15px;
+}
+.bottom1-2-2{
+    margin-top: 15px;
+}
+.bottom1-2-3{
+    margin-top: 15px;
+}
+.di{
+    width: 100%;
+    height: 51px;
+    background-color:rgb(34,34,34);
+    position: relative;
+}
+.di1{
+    width: 940px;
+    height: 21px;
+    position: absolute;
+    left: 205px;
+    top: 15px;
+}
+.di1-1{
+    font-size: 10px;
+    margin-right: 34.4px;
+    color:rgb(153,153,153);
+    float: left;
+    margin-left: 40px;
+    cursor: pointer;
+}
+.di1-1:hover{
+    color: rgb(0,158, 182);
+}
