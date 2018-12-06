@@ -42,6 +42,6 @@ body{
     color: #51A9D7;
     cursor: pointer;
 }
-.btn.controlCursor{
+.btn,.controlCursor{
     cursor: pointer;
 }

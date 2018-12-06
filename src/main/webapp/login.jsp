@@ -25,6 +25,12 @@
 <body>
 <div class="container-fluid">
     <div class="header center-block">
+        <div class="form-group error">
+            <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
+            <div class="col-sm-12">
+                <h5 class="text-center" style="color: red">${requestScope.error}</h5>
+            </div>
+        </div>
         <div class="form-group">
             <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
             <div class="col-sm-12">
@@ -67,7 +73,7 @@
             <div class="form-group">
                 <%--<label for="inputPassword3" class="col-sm-2 control-label"></label>--%>
                 <div class="col-sm-10">
-                    <input type="submit" class="controlCursor form-control colorMy" id="" value="登录">
+                    <button type="submit" class="controlCursor form-control btn-info" id="" value="登录">登录</button>
                 </div>
             </div>
         </form>

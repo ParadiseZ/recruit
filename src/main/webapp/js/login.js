@@ -45,7 +45,6 @@ $(function () {
 
     });
 
-
 });
 function checkForm(form) {
     if($(".cheking").attr("value")==0){

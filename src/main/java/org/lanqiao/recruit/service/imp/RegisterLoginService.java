@@ -1,13 +1,13 @@
 package org.lanqiao.recruit.service.imp;
 
-import org.lanqiao.recruit.dao.imp.RegisterLogin;
+import org.lanqiao.recruit.dao.imp.RegisterLoginDao;
 import org.lanqiao.recruit.service.inter.IRegisterLoginService;
 
 import java.sql.SQLException;
 import java.util.Map;
 
 public class RegisterLoginService implements IRegisterLoginService {
-    RegisterLogin registerDao = new RegisterLogin();
+    RegisterLoginDao registerDao = new RegisterLoginDao();
     public void addCuser(String username,String password) {
         try {
             registerDao.addCuser(username,password);
@@ -22,7 +22,7 @@ public class RegisterLoginService implements IRegisterLoginService {
         try {
             resultMap = registerDao.usernameLogin(username,password);
         } catch (SQLException e) {
-            resultMap.put(0,0);
+            resultMap.put(3,0);
         }
         return resultMap;
     }

@@ -17,15 +17,29 @@ public class person_domain {
     private String psrecord;
     private String psal;
     private String padvantage;
+    private String pemail;
 
     public person_domain() {
     }
 
-    public person_domain(int pid) {
-        this.pid = pid;
+    public person_domain(int phone, String password, String pname, String psex, String pborn, String ptime, String pstate, String pschool, String pmajor, String exjob, String psrecord, String psal, String padvantage, String pemail) {
+        this.phone = phone;
+        this.password = password;
+        this.pname = pname;
+        this.psex = psex;
+        this.pborn = pborn;
+        this.ptime = ptime;
+        this.pstate = pstate;
+        this.pschool = pschool;
+        this.pmajor = pmajor;
+        this.exjob = exjob;
+        this.psrecord = psrecord;
+        this.psal = psal;
+        this.padvantage = padvantage;
+        this.pemail = pemail;
     }
 
-    public person_domain(int pid, int phone, String password, String pname, String psex, String pborn, String ptime, String pstate, String pschool, String pmajor, String exjob, String psrecord, String psal, String padvantage) {
+    public person_domain(int pid, int phone, String password, String pname, String psex, String pborn, String ptime, String pstate, String pschool, String pmajor, String exjob, String psrecord, String psal, String padvantage, String pemail) {
         this.pid = pid;
         this.phone = phone;
         this.password = password;
@@ -40,6 +54,7 @@ public class person_domain {
         this.psrecord = psrecord;
         this.psal = psal;
         this.padvantage = padvantage;
+        this.pemail = pemail;
     }
 
     public int getPid() {
@@ -154,6 +169,14 @@ public class person_domain {
         this.padvantage = padvantage;
     }
 
+    public String getPemail() {
+        return pemail;
+    }
+
+    public void setPemail(String pemail) {
+        this.pemail = pemail;
+    }
+
     @Override
     public String toString() {
         return "person_domain{" +
@@ -171,6 +194,7 @@ public class person_domain {
                 ", psrecord='" + psrecord + '\'' +
                 ", psal='" + psal + '\'' +
                 ", padvantage='" + padvantage + '\'' +
+                ", pemail='" + pemail + '\'' +
                 '}';
     }
 }

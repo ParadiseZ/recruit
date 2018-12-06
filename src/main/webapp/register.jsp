@@ -67,7 +67,7 @@
             <div class="form-group">
                 <%--<label for="inputPassword3" class="col-sm-2 control-label"></label>--%>
                 <div class="col-sm-10">
-                    <input type="submit" class="controlCursor form-control colorMy" id="" value="注册">
+                    <button type="submit" class="controlCursor form-control btn-info" id="" value="注册">注册</button>
                 </div>
             </div>
         </form>

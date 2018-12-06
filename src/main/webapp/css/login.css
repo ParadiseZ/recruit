@@ -42,9 +42,6 @@ body{
     color: #51A9D7;
     cursor: pointer;
 }
-/*.btnChoose1{*/
-/*margin-left: 50px;*/
-/*}*/
-/*.btnChoose2{*/
-/*margin-right: 50px;*/
-/*}*/
+.btn,.controlCursor{
+    cursor: pointer;
+}
