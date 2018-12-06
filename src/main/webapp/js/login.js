@@ -1,12 +1,12 @@
 $(function () {
     $(".btnChoose1").click(function () {
         $(this).addClass("btn-info").removeClass("btn-default");
-        $(".userKind").attr("value","puser");
+        $(".userKind").attr("value","usernameLogin");
         $(".btnChoose2").removeClass("btn-info").addClass("btn-default").attr("value","")
     })
     $(".btnChoose2").click(function () {
         $(this).addClass("btn-info").removeClass("btn-default");
-        $(".userKind").attr("value","cuser");
+        $(".userKind").attr("value","emailLogin");
         $(".btnChoose1").removeClass("btn-info").addClass("btn-default").attr("value","")
     })
     $(".control").click(function () {

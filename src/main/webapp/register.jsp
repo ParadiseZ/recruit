@@ -34,7 +34,7 @@
             </div>
         </div>
         <br><br><br><br>
-        <form method="post" action="/register.do" class="form-horizontal form-register center-block" onsubmit="return checkForm(this);">
+        <form method="post" action="/registerLogin.do" class="form-horizontal form-register center-block" onsubmit="return checkForm(this);">
             <input type="text" style="display: none" class="cheking" name="checking" value="0">
             <input type="text" style="display: none" class="userKind" name="userKind" value="puser">
             <div class="form-group">
