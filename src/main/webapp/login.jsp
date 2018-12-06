@@ -1,66 +1,25 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2018/12/4/004
-  Time: 19:56
+  User: zzj
+  Date: 2018/12/2
+  Time: 15:16
   To change this template use File | Settings | File Templates.
+  注册页面
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>登录页面</title>
+    <link rel="icon" href="/images/title.jpg" mce_href="/image/title.jpg" type="image/x-icon">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/verify.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/register.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/verify.js"></script>
-    <script type="text/javascript" src="js/register.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
     <script>
-        $(function () {
-            $(".btnChoose1").click(function () {
-                $(this).addClass("btn-info").removeClass("btn-default")
-                $(".btnChoose2").removeClass("btn-info").addClass("btn-default")
-            })
-            $(".btnChoose2").click(function () {
-                $(this).addClass("btn-info").removeClass("btn-default")
-                $(".btnChoose1").removeClass("btn-info").addClass("btn-default")
-            })
-            $(".control").click(function () {
-                $(".control").hide()
-                $("#mpanel4").show()
-            })
-            $('#mpanel4').slideVerify({
-                type : 2,		//类型
-                vOffset : 5,	//误差量，根据需求自行调整
-                vSpace : 5,	//间隔
-                imgName : ['1.jpg', '2.jpg'],
-                imgSize : {
-                    width: '400px',
-                    height: '200px',
-                },
-                blockSize : {
-                    width: '40px',
-                    height: '40px',
-                },
-                barSize : {
-                    width : '400px',
-                    height : '40px',
-                },
-                ready : function() {
-                },
-                success : function() {
-                    alert('验证成功！');
-                    $("#mpanel4").hide()
-                    //......后续操作
-                },
-                error : function() {
-//		        	alert('验证失败！');
-                }
-
-            });
-        })
     </script>
 </head>
 <body>
@@ -75,50 +34,51 @@
             </div>
         </div>
         <br><br><br><br>
-        <form method="post" action="#" class="form-horizontal form-register center-block">
-
+        <form method="post" action="/register.do" class="form-horizontal form-register center-block" onsubmit="return checkForm(this);">
+            <input type="text" style="display: none" class="cheking" name="checking" value="0">
+            <input type="text" style="display: none" class="userKind" name="userKind" value="puser">
             <div class="form-group">
                 <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
                 <div class="col-sm-10">
-                    <button type="button" class="btn btn-info btnChoose1" name="">用户名登陆</button>
-                    <button type="button" class="btn btn-default btnChoose2" name="">邮箱登陆</button>
+                    <button type="button" class="btn btn-info btnChoose1" name="">用户名登录</button>
+                    <button type="button" class="btn btn-default btnChoose2" name="">邮箱登录</button>
                 </div>
             </div>
 
             <div class="form-group">
                 <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="username" placeholder="用户名">
+                    <input type="username" class="form-control" id="username" name="username" placeholder="用户名">
                 </div>
             </div>
             <div class="form-group" id="mpanel4">
             </div>
             <div class="form-group">
                 <div class="col-sm-10">
-                    <input type="button" class="control form-control" value="点击进行验证" style="">
+                    <input type="button" class="control controlCursor form-control" value="点击进行验证（图片右上角刷新）" style="">
                 </div>
             </div>
             <div class="form-group">
                 <%--<label for="inputPassword3" class="col-sm-2 control-label"></label>--%>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="密码">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="密码">
                 </div>
             </div>
             <div class="form-group">
                 <%--<label for="inputPassword3" class="col-sm-2 control-label"></label>--%>
                 <div class="col-sm-10">
-                    <input type="submit" class="form-control" id="" value="登录">
+                    <input type="submit" class="controlCursor form-control colorMy" id="" value="登录">
                 </div>
             </div>
         </form>
 
         <div class="form-group">
             <div class="col-sm-12">
-                <span class="right-buttom">已有账号<a href="/login.jsp" class="colorMy" style="">立即登录</a></span>
+                <span class="right-buttom">没有账号<a href="/register.jsp" class="colorMy" style="">立即注册</a></span>
+                </divc>
             </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>
