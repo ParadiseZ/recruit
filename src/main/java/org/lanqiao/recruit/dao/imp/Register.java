@@ -5,11 +5,13 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.lanqiao.recruit.dao.inter.IRegister;
 import org.lanqiao.recruit.utils.JDBCUtils;
 
+import java.sql.SQLException;
+
 public class Register implements IRegister {
-    public void addCuser(String username, String password, String userKind) {
+    public void addCuser(String username, String password) throws SQLException {
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
-        String sql = "insert into companyuser(corporation,password) value(?,?)";
-//        qr.query(sql);
+        String sql = "insert into companyuser(username,password) value(?,?)";
+        qr.update(sql,username,password);
 
     }
 }

@@ -5,7 +5,7 @@ $(function () {
         $(".btnChoose2").removeClass("btn-info").addClass("btn-default").attr("value","")
     })
     $(".btnChoose2").click(function () {
-        $(this).addClass("btn-info").removeClass("btn-default").attr("value","cuser");
+        $(this).addClass("btn-info").removeClass("btn-default");
         $(".userKind").attr("value","cuser");
         $(".btnChoose1").removeClass("btn-info").addClass("btn-default").attr("value","")
     })

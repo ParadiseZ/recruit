@@ -9,14 +9,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class JDBCUtils {
-    private static DataSource ds ;
-    private static Connection con;
-    public static DataSource getDataSource(){
+    static DataSource ds ;
+    static {
         ds = new ComboPooledDataSource("mvcdemo");
+    }
+    public static DataSource getDataSource(){
         return ds;
     }
     public static Connection getConnection() throws SQLException {
-        con = ds.getConnection();
+        Connection con = ds.getConnection();
         return con;
     }
     public static void releaseSource(Connection con, Statement statement, ResultSet res){
