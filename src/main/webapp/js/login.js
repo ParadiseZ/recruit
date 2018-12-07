@@ -2,11 +2,11 @@ $(function () {
     $(".btnChoose1").click(function () {
         $(this).addClass("btn-info").removeClass("btn-default");
         $(".userKind").attr("value","usernameLogin");
-        $("#username").attr("placeholder","用户名");
+        $("#username").attr("placeholder","用户");
         $(".btnChoose2").removeClass("btn-info").addClass("btn-default").attr("value","")
     })
     $(".btnChoose2").click(function () {
-        $(this).addClass("btn-info").removeClass("btn-default");
+        $(this).addClass("btn-info").removeClass("btn-default"),
         $(".userKind").attr("value","emailLogin");
         $("#username").attr("placeholder","邮箱");
         $(".btnChoose1").removeClass("btn-info").addClass("btn-default").attr("value","")

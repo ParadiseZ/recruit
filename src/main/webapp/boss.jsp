@@ -13,22 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>boss直聘</title>
-
-
     <link rel="icon" href="img/benz.png">
-
     <link rel="stylesheet" href="css/boss.css">
-
-
-
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
-
     <script src="js/jquery-1.12.4.js"></script>
     <script src="js/bootstrap.js"></script>
-
-
-
     <style type="text/css">
         /* img{
             z-index: -1;
