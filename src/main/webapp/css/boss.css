@@ -155,7 +155,7 @@ a,b{
 .carousel{
     width: 800px;
     height: 600px;
-    position: absolute;
+    position: relative;
     margin: 0 auto;
 }
 .zhaopin{

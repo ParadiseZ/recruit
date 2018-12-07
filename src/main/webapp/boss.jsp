@@ -9,15 +9,31 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>boss直聘</title>
+
+
     <link rel="icon" href="img/benz.png">
+
     <link rel="stylesheet" href="css/boss.css">
+
+
+
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
+
     <script src="js/jquery-1.12.4.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script>
-    </script>
+
+
+
+    <style type="text/css">
+        /* img{
+            z-index: -1;
+        } */
+    </style>
 </head>
 <body>
 <div class="all">
@@ -918,7 +934,7 @@
         </div>
     </div>
     <!-- 职位结束 -->
-    <!-- 公司开始 -->
+    <!-- 公司 -->
     <div class="com">
 
         <div class="com1">
@@ -1019,7 +1035,9 @@
             <div class="di1-1">首都网警</div>
         </div>
     </div>
+
     <!-- 底部栏结束 -->
 </div>
 </body>
+</html>
 </html>
