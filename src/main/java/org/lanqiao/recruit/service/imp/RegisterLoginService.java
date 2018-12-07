@@ -26,4 +26,15 @@ public class RegisterLoginService implements IRegisterLoginService {
         }
         return resultMap;
     }
+
+    //邮箱登录
+    public Map emailLogin(String email,String password){
+        Map resultMap = null;
+        try {
+            resultMap = registerDao.emailLogin(email,password);
+        } catch (SQLException e) {
+            resultMap.put(3,0);
+        }
+        return resultMap;
+    }
 }

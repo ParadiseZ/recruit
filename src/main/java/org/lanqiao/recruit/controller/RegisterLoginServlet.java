@@ -41,24 +41,53 @@ public class RegisterLoginServlet extends HttpServlet {
             httpSession.setAttribute("password",password);
             req.getRequestDispatcher("/perfectimformationcuser.jsp").forward(req,resp);
         }else if("usernameLogin".equals(userKind)){
+            //用户名登录
             Map resultMap = registerService.usernameLogin(username,password);
             if(resultMap.containsKey(0)){
                 req.setAttribute("error","您的用户名或密码输入错误！");
                 req.getRequestDispatcher("/login.jsp").forward(req,resp);
-            }else if(resultMap.containsKey(1)){
-                List<CompanyUser> companyUserList = (List<CompanyUser>) resultMap.get(1);
-                httpSession.setAttribute("userImformation",companyUserList);
-                req.getRequestDispatcher("/boss.jsp").forward(req,resp);
-            }else if(resultMap.containsKey(2)){
-                List<person_domain> person_domainList = (List<person_domain>) resultMap.get(2);
-                httpSession.setAttribute("userImformation",person_domainList);
-                req.getRequestDispatcher("/boss.jsp").forward(req,resp);
-            }else if(resultMap.containsKey(3)){
-                req.setAttribute("error","查询该用户失败！");
+            }
+            getImformationFromService(req,resp,resultMap,httpSession);
+        }else if("emailLogin".equals(userKind)){
+            Map resultMap = registerService.emailLogin(username,password);
+            if(resultMap.containsKey(0)){
+                req.setAttribute("error","您的邮箱或密码输入错误！");
                 req.getRequestDispatcher("/login.jsp").forward(req,resp);
             }
-        }else if("emailLogin".equals(userKind)){
+            getImformationFromService(req,resp,resultMap,httpSession);
+        }
+    }
 
+    public void getImformationFromService(HttpServletRequest req, HttpServletResponse resp,Map resultMap,HttpSession httpSession){
+        if(resultMap.containsKey(1)){
+            List<CompanyUser> companyUserList = (List<CompanyUser>) resultMap.get(1);
+            httpSession.setAttribute("userImformation",companyUserList);
+            try {
+                req.getRequestDispatcher("/boss.jsp").forward(req,resp);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(resultMap.containsKey(2)){
+            List<person_domain> person_domainList = (List<person_domain>) resultMap.get(2);
+            httpSession.setAttribute("userImformation",person_domainList);
+            try {
+                req.getRequestDispatcher("/boss.jsp").forward(req,resp);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(resultMap.containsKey(3)){
+            req.setAttribute("error","查询该用户失败！");
+            try {
+                req.getRequestDispatcher("/login.jsp").forward(req,resp);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
