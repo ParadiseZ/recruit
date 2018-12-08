@@ -1,0 +1,27 @@
+.all{
+    zoom: 1;
+}
+.top,.box,.box1,.form-div{
+    position: relative;
+}
+.font-size{
+    font-size: large;
+}
+.dropdown>a{
+    text-decoration: none;
+    color: white;
+}
+.dropdown>a:hover,.btn:hover{
+    cursor: pointer;
+}
+.form-div{
+    width: 1260px;
+    height: 600px;
+    background-color: #5dd5c8;
+}
+.form-style{
+    width: 1000px;
+    height: 540px;
+    background-color: yellow;
+    position: relative;
+}

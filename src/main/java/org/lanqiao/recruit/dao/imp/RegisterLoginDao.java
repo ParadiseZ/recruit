@@ -14,10 +14,10 @@ import java.util.Map;
 
 public class RegisterLoginDao implements IRegisterLoginDao {
     //添加企业用户
-    public void addCuser(String username, String password) throws SQLException {
+    public void addCuser(CompanyUser companyUser) throws SQLException {
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
-        String sql = "insert into companyuser(username,password) value(?,?)";
-        qr.update(sql,username,password);
+        String sql = "insert into companyuser(username,password,phone,corporation,companyname,email,job) value(?,?,?,?,?,?,?)";
+        qr.update(sql,companyUser.getUserName(),companyUser.getPassword(),companyUser.getPhone(),companyUser.getCorporation(),companyUser.getCompanyName(),companyUser.getEmail(),companyUser.getJob());
     }
 
     //用户名登录

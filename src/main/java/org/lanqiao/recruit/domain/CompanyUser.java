@@ -4,7 +4,7 @@ public class CompanyUser {
     private int id;
     private String userName;
     private String password;
-    private int phone;
+    private long phone;
     private String corporation;
     private String companyName;
     private String email;
@@ -13,7 +13,7 @@ public class CompanyUser {
     public CompanyUser() {
     }
 
-    public CompanyUser(String userName, String password, int phone, String corporation, String companyName, String email, String job) {
+    public CompanyUser(String userName, String password, long phone, String corporation, String companyName, String email, String job) {
         this.userName = userName;
         this.password = password;
         this.phone = phone;
@@ -23,7 +23,7 @@ public class CompanyUser {
         this.job = job;
     }
 
-    public CompanyUser(int id, String userName, String password, int phone, String corporation, String companyName, String email, String job) {
+    public CompanyUser(int id, String userName, String password, long phone, String corporation, String companyName, String email, String job) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -58,11 +58,11 @@ public class CompanyUser {
         this.password = password;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 

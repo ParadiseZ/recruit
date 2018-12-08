@@ -1,6 +1,7 @@
 package org.lanqiao.recruit.service.imp;
 
 import org.lanqiao.recruit.dao.imp.RegisterLoginDao;
+import org.lanqiao.recruit.domain.CompanyUser;
 import org.lanqiao.recruit.service.inter.IRegisterLoginService;
 
 import java.sql.SQLException;
@@ -8,9 +9,9 @@ import java.util.Map;
 
 public class RegisterLoginService implements IRegisterLoginService {
     RegisterLoginDao registerDao = new RegisterLoginDao();
-    public void addCuser(String username,String password) {
+    public void addCuser(CompanyUser companyUser) {
         try {
-            registerDao.addCuser(username,password);
+            registerDao.addCuser(companyUser);
         } catch (SQLException e) {
             e.printStackTrace();
         }
