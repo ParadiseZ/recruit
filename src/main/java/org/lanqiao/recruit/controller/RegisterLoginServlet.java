@@ -99,17 +99,17 @@ public class RegisterLoginServlet extends HttpServlet {
                 if(!usernameOld.equals(userKind)){
                     boolean checkUsername = registerService.checkImfor(username);
                     if(!checkUsername){
-                        req.setAttribute("error","该用户名已存在！");
+                        req.setAttribute("error","该用户名已存在！修改失败");
                         req.getRequestDispatcher("/WEB-INF/pfimforcuser.jsp").forward(req,resp);
                     }
-                }
-
-                String getId = req.getParameter("id");
-                if((!"".equals(phoneBefore)||phoneBefore!=null)&&(!"".equals(getId)||getId!=null)){
-                    long phoneAfter = Long.parseLong(phoneBefore);
-                    int id = Integer.parseInt(getId);
-                    CompanyUser cUser = new CompanyUser(id,username,password,phoneAfter,corporation,companyname,email,job);
-                    registerService.updateCuser(cUser);
+                }else {
+                    String getId = req.getParameter("id");
+                    if((!"".equals(phoneBefore)||phoneBefore!=null)&&(!"".equals(getId)||getId!=null)){
+                        long phoneAfter = Long.parseLong(phoneBefore);
+                        int id = Integer.parseInt(getId);
+                        CompanyUser cUser = new CompanyUser(id,username,password,phoneAfter,corporation,companyname,email,job);
+                        registerService.updateCuser(cUser);
+                    }
                 }
             }
         }
@@ -119,7 +119,7 @@ public class RegisterLoginServlet extends HttpServlet {
     public void getImformationFromService(HttpServletRequest req, HttpServletResponse resp,Map resultMap,HttpSession httpSession){
         if(resultMap.containsKey(1)){
             List<CompanyUser> companyUserList = (List<CompanyUser>) resultMap.get(1);
-            req.setAttribute("userImformation",companyUserList);
+            httpSession.setAttribute("userImformation",companyUserList);
             try {
                 req.getRequestDispatcher("/WEB-INF/pfimforcuser.jsp").forward(req,resp);
             } catch (ServletException e) {

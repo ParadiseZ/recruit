@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: zzj
@@ -26,6 +27,11 @@
     </style>
 </head>
 <body>
+<c:forEach begin="0" end="0" items="${sessionScope.userImformation}" var="userImfor" step="1">
+    <c:set var="userImforGet" value="${userImfor}" scope="request"></c:set>
+    <%--<c:set var="userName" value="${userImfor.userName}" scope="session"></c:set>--%>
+</c:forEach>
+
 <div class="all">
     <!-- 头部开始 -->
     <div class="header">
@@ -35,14 +41,22 @@
             <div class="box">职位</div>
             <div class="box">公司</div>
             <div class="top1">
-                <div class="box2">上传简历</div>
-                <div class="box2">我要招聘</div>
-                <div class="box3">
-                    <button class="button">注册</button>
-                </div>
-                <div class="box3">
-                    <button class="button">登录</button>
-                </div>
+                <c:choose>
+                    <c:when test="${not empty userImforGet}">
+                        ${userImforGet.pname}
+                    </c:when>
+                    <c:otherwise>
+                        <div class="box2">上传简历</div>
+                        <div class="box2">我要招聘</div>
+                        <div class="box3">
+                            <button class="button">注册</button>
+                        </div>
+                        <div class="box3">
+                            <button class="button">登录</button>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+
             </div>
         </div>
     </div>

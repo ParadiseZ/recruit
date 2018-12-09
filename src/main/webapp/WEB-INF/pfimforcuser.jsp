@@ -10,7 +10,7 @@
 <%@ taglib prefix="fun" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <c:forEach begin="0" end="0" items="${requestScope.userImformation}" var="userImfor" step="1">
+    <c:forEach begin="0" end="0" items="${sessionScope.userImformation}" var="userImfor" step="1">
         <c:set var="userImforGet" value="${userImfor}" scope="request"></c:set>
         <%--<c:set var="userName" value="${userImfor.userName}" scope="session"></c:set>--%>
     </c:forEach>
@@ -53,7 +53,7 @@
             <div class="top1">
                 <div class="dropdown">
                     <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <c:out value="${userImfor.userName}"></c:out>
+                        ${userImforGet.userName}
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -87,7 +87,7 @@
                     <label for="username" class="col-sm-3 control-label">用户名</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control input-control" id="username" name="username" value="${userImforGet.userName}" placeholder="用户名">
-                        <input type="text" style="display: none" name="usernameOld" value="${userImforGet.userName}">
+                        <input type="text" style="display: none" class="" name="usernameOld" value="${userImforGet.userName}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -144,7 +144,7 @@
                         <c:when test="${userImforGet.phone==0}">
                             <button type="submit" class="btn btn-info">保存并注册</button>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button type="button" class="btn btn-info">完善公司信息</button>
+                            <%--<button type="button" class="btn btn-info">完善公司信息</button>--%>
                         </c:when>
                         <c:otherwise>
                             <button type="button" class="btn btn-info modify">点击修改</button>
