@@ -4,9 +4,6 @@
 .top,.box,.box1,.form-div{
     position: relative;
 }
-.font-size{
-    font-size: large;
-}
 .dropdown>a{
     text-decoration: none;
     color: white;

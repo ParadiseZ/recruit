@@ -71,7 +71,7 @@
                             <contextPath></contextPath>
                         </webAppConfig>
                         <httpConnector>
-                            <port>8000</port>
+                            <port>8001</port>
                         </httpConnector>
                     </configuration>
                 </plugin>

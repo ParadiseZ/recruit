@@ -20,6 +20,22 @@ public class RegisterLoginDao implements IRegisterLoginDao {
         qr.update(sql,companyUser.getUserName(),companyUser.getPassword(),companyUser.getPhone(),companyUser.getCorporation(),companyUser.getCompanyName(),companyUser.getEmail(),companyUser.getJob());
     }
 
+    //修改企业用户信息
+    public void modifyCuser(CompanyUser companyUser) throws SQLException {
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        String sql = "update companyuser set username=?,password=?,phone=?,corporation=?,companyname=?,email=?,job=? where id=?";
+        qr.update(sql,companyUser.getUserName(),companyUser.getPassword(),companyUser.getPhone(),companyUser.getCorporation(),companyUser.getCompanyName(),companyUser.getEmail(),companyUser.getJob(),companyUser.getId());
+    }
+    //检查用户名是否存在
+    public boolean checkImfor(String username) throws SQLException {
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+        String sql = "select * from companyuser where username=?";
+        List<CompanyUser> cUserListCheck = qr.query(sql,new BeanListHandler<>(CompanyUser.class),username);
+        if(cUserListCheck.isEmpty()){
+            return true;
+        }else return false;
+    }
+
     //用户名登录
     public Map usernameLogin(String username, String password) throws SQLException {
         Map resultMap = new HashMap();
@@ -40,15 +56,11 @@ public class RegisterLoginDao implements IRegisterLoginDao {
                 return resultMap;
             }else{
                 //将该个人用户信息查询出来并保存
-                sql = "select * from person";
-                person_domainList = queryRunner.query(sql,person_domain);
                 resultMap.put(2,person_domainList);
                 return  resultMap;
             }
         }else {
             //将该企业用户查询出来并保存
-            sql = "select * from companyuser";
-            companyUserList = queryRunner.query(sql,companyUser);
             resultMap.put(1,companyUserList);
             return resultMap;
         }

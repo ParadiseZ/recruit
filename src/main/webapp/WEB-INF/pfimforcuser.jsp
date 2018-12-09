@@ -10,20 +10,35 @@
 <%@ taglib prefix="fun" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>完善信息</title>
-
+    <c:forEach begin="0" end="0" items="${requestScope.userImformation}" var="userImfor" step="1">
+        <c:set var="userImforGet" value="${userImfor}" scope="request"></c:set>
+        <%--<c:set var="userName" value="${userImfor.userName}" scope="session"></c:set>--%>
+    </c:forEach>
+    <c:choose>
+    <c:when test="${userImforGet.phone==0}">
+        <title>完善信息</title>
+    </c:when>
+    <c:otherwise>
+        <title>修改信息</title>
+    </c:otherwise>
+    </c:choose>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>boss直聘</title>
-    <link rel="icon" href="img/benz.png">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
-    <link rel="stylesheet" href="css/boss.css">
-    <link rel="stylesheet" href="css/pfimforcuser.css">
-    <script src="js/jquery-1.12.4.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/pfimforcuser.js"></script>
+
+    <link rel="icon" href="/images/title.jpg" mce_href="/image/title.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css">
+    <link rel="stylesheet" href="../css/boss.css">
+    <link rel="stylesheet" href="../css/pfimforcuser.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/pfimforcuser.js"></script>
+    <c:choose>
+        <c:when test="${userImforGet.phone!=0}">
+            <script type="text/javascript" src="../js/cusermodify.js"></script>
+        </c:when>
+    </c:choose>
 </head>
 <body>
     <div class="all">
@@ -37,22 +52,12 @@
 
             <div class="top1">
                 <div class="dropdown">
-                    <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <%--<c:forEach begin="0" end="0" items="${sessionScope.userImformation}" var="userImfor" step="1">
-                            <c:out value="${userImfor.userName}"></c:out>
-                            <c:set var="userImforGet" value="${userImfor}" scope="session"></c:set>
-                            &lt;%&ndash;<c:set var="userName" value="${userImfor.userName}" scope="session"></c:set>&ndash;%&gt;
-                        </c:forEach>--%>
-
-                            <c:forEach begin="0" end="0" items="${requestScope.userImformation}" var="userImfor" step="1">
-                                <c:out value="${userImfor.userName}"></c:out>
-                                <c:set var="userImforGet" value="${userImfor}" scope="request"></c:set>
-                                <%--<c:set var="userName" value="${userImfor.userName}" scope="session"></c:set>--%>
-                            </c:forEach>
+                    <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <c:out value="${userImfor.userName}"></c:out>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/pfimforcuser.jsp">个人信息</a></li>
+<%--                        <li><a href=/pfimforcuser.jsp">个人信息</a></li>--%>
                         <li><a href="#">招聘信息</a></li>
                         <li><a href="/login.jsp">退出登录</a></li>
                     </ul>
@@ -62,17 +67,27 @@
     </div>
         <%--表单盒子--%>
         <div class="center-block form-div">
-            <form class="form-horizontal center-block form-style" action="/registerLogin.do?method=pfimforcuser" method="post" onsubmit="return checkSubmitEmailPhone(this)">
+            <form class="form-horizontal center-block form-style" action="/registerLogin.do" method="post" onsubmit="return checkSubmitEmailPhone(this)">
+                <c:choose>
+                    <c:when test="${userImforGet.phone==0}">
+                        <input type="text" style="display: none" name="method" value="registerFinal">
+                    </c:when>
+                    <c:otherwise>
+                        <input type="text" style="display: none" name="method" value="modify">
+                        <input type="text" style="display: none" name="id" value="${userImforGet.id}">
+                    </c:otherwise>
+                </c:choose>
                 <div class="form-group col-sm-12">
-                    <p class="text-center warning"></p>
+                    <h5 class="text-center warning" style="color: red">${requestScope.error}</h5>
                 </div>
                 <div class="form-group col-sm-12">
-                    <p class="text-center">企业用户信息</p>
+                    <p class="text-center" style="font-size: large">企业用户信息</p>
                 </div>
                 <div class="form-group">
                     <label for="username" class="col-sm-3 control-label">用户名</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control input-control" id="username" name="username" value="${userImforGet.userName}" placeholder="用户名">
+                        <input type="text" style="display: none" name="usernameOld" value="${userImforGet.userName}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -85,7 +100,14 @@
                 <div class="form-group">
                     <label for="phone" class="col-sm-3 control-label">联系方式</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control input-control" id="phone" name="phone" value="${userImforGet.phone}" placeholder="手机号">
+                        <c:choose>
+                            <c:when test="${userImforGet.phone==0}">
+                                <input type="text" class="form-control input-control" id="phone" name="phone" value="" placeholder="手机号">
+                            </c:when>
+                            <c:otherwise>
+                                <input type="text" class="form-control input-control" id="phone" name="phone" value="${userImforGet.phone}" placeholder="手机号">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
 
@@ -118,10 +140,19 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-10">
-                        <input type="submit" value="提交">
-                        <button type="submit" class="btn btn-info submitOne">保存并注册</button>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="button" class="btn btn-default">完善公司信息</button>
+                        <c:choose>
+                        <c:when test="${userImforGet.phone==0}">
+                            <button type="submit" class="btn btn-info">保存并注册</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="button" class="btn btn-info">完善公司信息</button>
+                        </c:when>
+                        <c:otherwise>
+                            <button type="button" class="btn btn-info modify">点击修改</button>
+                            <button type="submit" class="btn btn-info saveImfor" style="display: none">保存信息</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="button" class="btn btn-info">修改公司信息</button>
+                        </c:otherwise>
+                        </c:choose>
                     </div>
                     <%--<div class="col-sm-offset-2 col-sm-6">
                         <button type="submit" class="btn btn-default">完善公司信息</button>
@@ -130,12 +161,6 @@
             </form>
 
         </div>
-
-
-
-
-
-
     </div>
 </body>
 </html>

@@ -17,6 +17,15 @@ public class RegisterLoginService implements IRegisterLoginService {
         }
     }
 
+    @Override
+    public void updateCuser(CompanyUser companyUser) {
+        try {
+            registerDao.modifyCuser(companyUser);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     //用户名登录
     public Map usernameLogin(String username,String password){
         Map resultMap = null;
@@ -37,5 +46,16 @@ public class RegisterLoginService implements IRegisterLoginService {
             resultMap.put(3,0);
         }
         return resultMap;
+    }
+
+    //检查用户名是否存在
+    public boolean checkImfor(String username){
+        boolean checkResult = false;
+        try {
+            checkResult = registerDao.checkImfor(username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return checkResult;
     }
 }

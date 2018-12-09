@@ -5,6 +5,7 @@ import org.lanqiao.recruit.domain.person_domain;
 import org.lanqiao.recruit.service.imp.RegisterLoginService;
 import org.lanqiao.recruit.service.imp.personServiecImpl;
 import org.lanqiao.recruit.service.inter.IPersonService;
+import org.lanqiao.recruit.service.inter.IRegisterLoginService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +21,7 @@ import java.util.Map;
 @WebServlet("/registerLogin.do")
 public class RegisterLoginServlet extends HttpServlet {
     IPersonService iPersonService=new personServiecImpl();
-    RegisterLoginService registerService = new RegisterLoginService();
+    IRegisterLoginService registerService = new RegisterLoginService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -49,14 +50,20 @@ public class RegisterLoginServlet extends HttpServlet {
             }
         }else if("cuser".equals(userKind)){
             //添加企业用户
-            CompanyUser companyUser = new CompanyUser();
-            companyUser.setUserName(username);
-            companyUser.setPassword(password);
-            List<CompanyUser> companyUserList = new ArrayList<>();
-            companyUserList.add(companyUser);
+            boolean checkUsername = registerService.checkImfor(username);
+            if(!checkUsername){
+                req.setAttribute("error","该用户名已存在！");
+                req.getRequestDispatcher("/register.jsp").forward(req,resp);
+            }else {
+                CompanyUser companyUser = new CompanyUser();
+                companyUser.setUserName(username);
+                companyUser.setPassword(password);
+                List<CompanyUser> companyUserList = new ArrayList<>();
+                companyUserList.add(companyUser);
 //            httpSession.setAttribute("userImformation",companyUserList);
-            req.setAttribute("userImformation",companyUserList);
-            req.getRequestDispatcher("/pfimforcuser.jsp").forward(req,resp);
+                req.setAttribute("userImformation",companyUserList);
+                req.getRequestDispatcher("/WEB-INF/pfimforcuser.jsp").forward(req,resp);
+            }
         }else if("usernameLogin".equals(userKind)){
             //用户名登录
             Map resultMap = registerService.usernameLogin(username,password);
@@ -73,28 +80,48 @@ public class RegisterLoginServlet extends HttpServlet {
             }
             getImformationFromService(req,resp,resultMap,httpSession);
         }
-        if("pfimforcuser".equals(method)){
+        //获取企业用户信息
+        if(!"".equals(method)||method!=null){
             String phoneBefore = req.getParameter("phone");
-            long phoneAfter = 0;
-            CompanyUser cUser = null;
-            if(!"".equals(phoneBefore)||phoneBefore!=null){
-                phoneAfter = Long.parseLong(phoneBefore);
-                String corporation = req.getParameter("corporation");
-                String companyname = req.getParameter("companyname");
-                String email = req.getParameter("email");
-                String job = req.getParameter("job");
-                cUser = new CompanyUser(username,password,phoneAfter,corporation,companyname,email,job);
-                registerService.addCuser(cUser);
+            String corporation = req.getParameter("corporation");
+            String companyname = req.getParameter("companyname");
+            String email = req.getParameter("email");
+            String job = req.getParameter("job");
+            if("registerFinal".equals(method)){//进行企业用户注册
+                //判断该用户是否存在
+                if(!"".equals(phoneBefore)||phoneBefore!=null){
+                    long phoneAfter = Long.parseLong(phoneBefore);
+                    CompanyUser cUser = new CompanyUser(username,password,phoneAfter,corporation,companyname,email,job);
+                    registerService.addCuser(cUser);
+                }
+            }else if("modify".equals(method)){
+                String usernameOld = req.getParameter("usernameOld");
+                if(!usernameOld.equals(userKind)){
+                    boolean checkUsername = registerService.checkImfor(username);
+                    if(!checkUsername){
+                        req.setAttribute("error","该用户名已存在！");
+                        req.getRequestDispatcher("/WEB-INF/pfimforcuser.jsp").forward(req,resp);
+                    }
+                }
+
+                String getId = req.getParameter("id");
+                if((!"".equals(phoneBefore)||phoneBefore!=null)&&(!"".equals(getId)||getId!=null)){
+                    long phoneAfter = Long.parseLong(phoneBefore);
+                    int id = Integer.parseInt(getId);
+                    CompanyUser cUser = new CompanyUser(id,username,password,phoneAfter,corporation,companyname,email,job);
+                    registerService.updateCuser(cUser);
+                }
             }
         }
+
     }
 
     public void getImformationFromService(HttpServletRequest req, HttpServletResponse resp,Map resultMap,HttpSession httpSession){
         if(resultMap.containsKey(1)){
             List<CompanyUser> companyUserList = (List<CompanyUser>) resultMap.get(1);
-            httpSession.setAttribute("userImformation",companyUserList);
+            req.setAttribute("userImformation",companyUserList);
             try {
-                req.getRequestDispatcher("/boss.jsp").forward(req,resp);
+                req.getRequestDispatcher("/WEB-INF/pfimforcuser.jsp").forward(req,resp);
             } catch (ServletException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -102,7 +129,7 @@ public class RegisterLoginServlet extends HttpServlet {
             }
         }else if(resultMap.containsKey(2)){
             List<person_domain> person_domainList = (List<person_domain>) resultMap.get(2);
-            httpSession.setAttribute("userImformation",person_domainList);
+            req.setAttribute("userImformation",person_domainList);
             try {
                 req.getRequestDispatcher("/boss.jsp").forward(req,resp);
             } catch (ServletException e) {
