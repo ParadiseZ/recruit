@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +82,7 @@ public class RegisterLoginServlet extends HttpServlet {
             getImformationFromService(req,resp,resultMap,httpSession);
         }
         //获取企业用户信息
-        if(!"".equals(method)||method!=null){
+        if(!"".equals(method)&&  method!=null){
             String phoneBefore = req.getParameter("phone");
             String corporation = req.getParameter("corporation");
             String companyname = req.getParameter("companyname");
@@ -96,32 +97,37 @@ public class RegisterLoginServlet extends HttpServlet {
                 }
             }else if("modify".equals(method)){
                 String usernameOld = req.getParameter("usernameOld");
-                if(!usernameOld.equals(userKind)){
+                if(!usernameOld.equals(username)){
+                    //如果用户名改变进行查询是否重复
                     boolean checkUsername = registerService.checkImfor(username);
                     if(!checkUsername){
                         req.setAttribute("error","该用户名已存在！修改失败");
                         req.getRequestDispatcher("/WEB-INF/pfimforcuser.jsp").forward(req,resp);
+                    }else {
+                        //如果不重复则进行修改
+                        modifyImforAfter(req,resp,phoneBefore,username,password,corporation,companyname,email,job,httpSession);
                     }
                 }else {
-                    String getId = req.getParameter("id");
-                    if((!"".equals(phoneBefore)||phoneBefore!=null)&&(!"".equals(getId)||getId!=null)){
-                        long phoneAfter = Long.parseLong(phoneBefore);
-                        int id = Integer.parseInt(getId);
-                        CompanyUser cUser = new CompanyUser(id,username,password,phoneAfter,corporation,companyname,email,job);
-                        registerService.updateCuser(cUser);
-                    }
+                    //如果用户名未改变直接进行修改
+                    modifyImforAfter(req,resp,phoneBefore,username,password,corporation,companyname,email,job,httpSession);
                 }
+            }else if("logout".equals(method)){
+
+                //退出登录，删除会话中的信息
+                httpSession.setAttribute("userImformation",null);
+                req.getRequestDispatcher("/login.jsp").forward(req,resp);
+            }else if("loginImfor".equals(method)){
+                req.getRequestDispatcher("/WEB-INF/pfimforcuser.jsp").forward(req,resp);
             }
         }
-
     }
-
+    //获取用户信息并保存在session中
     public void getImformationFromService(HttpServletRequest req, HttpServletResponse resp,Map resultMap,HttpSession httpSession){
         if(resultMap.containsKey(1)){
             List<CompanyUser> companyUserList = (List<CompanyUser>) resultMap.get(1);
             httpSession.setAttribute("userImformation",companyUserList);
             try {
-                req.getRequestDispatcher("/WEB-INF/pfimforcuser.jsp").forward(req,resp);
+                req.getRequestDispatcher("/boss.jsp").forward(req,resp);
             } catch (ServletException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -129,7 +135,7 @@ public class RegisterLoginServlet extends HttpServlet {
             }
         }else if(resultMap.containsKey(2)){
             List<person_domain> person_domainList = (List<person_domain>) resultMap.get(2);
-            req.setAttribute("userImformation",person_domainList);
+            httpSession.setAttribute("userImformation",person_domainList);
             try {
                 req.getRequestDispatcher("/boss.jsp").forward(req,resp);
             } catch (ServletException e) {
@@ -141,6 +147,28 @@ public class RegisterLoginServlet extends HttpServlet {
             req.setAttribute("error","查询该用户失败！");
             try {
                 req.getRequestDispatcher("/login.jsp").forward(req,resp);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //检查是否重复后修改企业用户信息
+    public void modifyImforAfter(HttpServletRequest req, HttpServletResponse resp,String phoneBefore,String username,String password,String corporation,String companyname,String email,String job,HttpSession httpSession){
+        String getId = req.getParameter("id");
+        if((!"".equals(phoneBefore)||phoneBefore!=null)&&(!"".equals(getId)||getId!=null)){
+            long phoneAfter = Long.parseLong(phoneBefore);
+            int id = Integer.parseInt(getId);
+            CompanyUser cUser = new CompanyUser(id,username,password,phoneAfter,corporation,companyname,email,job);
+            List<CompanyUser> companyUserList = new ArrayList<CompanyUser>();
+            companyUserList.add(cUser);
+            httpSession.setAttribute("userImformation",companyUserList);
+            req.setAttribute("success","修改成功！");
+            registerService.updateCuser(cUser);
+            try {
+                req.getRequestDispatcher("/WEB-INF/pfimforcuser.jsp").forward(req,resp);
             } catch (ServletException e) {
                 e.printStackTrace();
             } catch (IOException e) {

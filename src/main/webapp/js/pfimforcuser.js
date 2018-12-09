@@ -1,5 +1,4 @@
 $(function () {
-
 })
 
 //jquery验证邮箱

@@ -59,7 +59,7 @@
                     <ul class="dropdown-menu">
 <%--                        <li><a href=/pfimforcuser.jsp">个人信息</a></li>--%>
                         <li><a href="#">招聘信息</a></li>
-                        <li><a href="/login.jsp">退出登录</a></li>
+                        <li><a href="/registerLogin.do?method=logout">退出登录</a></li>
                     </ul>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                     </c:otherwise>
                 </c:choose>
                 <div class="form-group col-sm-12">
-                    <h5 class="text-center warning" style="color: red">${requestScope.error}</h5>
+                    <h5 class="text-center warning" style="color: red">${requestScope.error}${requestScope.success}</h5>
                 </div>
                 <div class="form-group col-sm-12">
                     <p class="text-center" style="font-size: large">企业用户信息</p>

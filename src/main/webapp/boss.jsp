@@ -18,8 +18,10 @@
     <link rel="stylesheet" href="css/boss.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/pfimforcuser.css">
     <script src="js/jquery-1.12.4.js"></script>
     <script src="js/bootstrap.js"></script>
+    <%--<script type="text/javascript" src="js/pfimforcuser.js"></script>--%>
     <style type="text/css">
         /* img{
             z-index: -1;
@@ -43,7 +45,17 @@
             <div class="top1">
                 <c:choose>
                     <c:when test="${not empty userImforGet}">
-                        ${userImforGet.pname}
+                        <div class="dropdown">
+                            <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    ${userImforGet.userName}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/registerLogin.do?method=loginImfor">个人信息</a></li>
+                                <li class=""><a href="#">招聘信息</a></li>
+                                <li class=""><a href="/registerLogin.do?method=logout">退出登录</a></li>
+                            </ul>
+                        </div>
                     </c:when>
                     <c:otherwise>
                         <div class="box2">上传简历</div>
