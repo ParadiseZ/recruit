@@ -3,6 +3,8 @@ package org.lanqiao.recruit.controller;
 import org.lanqiao.recruit.domain.CompanyUser;
 import org.lanqiao.recruit.domain.person_domain;
 import org.lanqiao.recruit.service.imp.RegisterLoginService;
+import org.lanqiao.recruit.service.imp.personServiecImpl;
+import org.lanqiao.recruit.service.inter.IPersonService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +19,7 @@ import java.util.Map;
 
 @WebServlet("/registerLogin.do")
 public class RegisterLoginServlet extends HttpServlet {
+    IPersonService iPersonService=new personServiecImpl();
     RegisterLoginService registerService = new RegisterLoginService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,6 +37,16 @@ public class RegisterLoginServlet extends HttpServlet {
         String method = req.getParameter("method");
         if("puser".equals(userKind)){
             //添加个人用户
+            req.setAttribute( "username" ,username);
+            req.setAttribute( "password",password );
+            boolean bb = iPersonService.checkinfor(username,password );
+
+            if (bb){
+                req.getRequestDispatcher("/personal.jsp").forward(req,resp);
+            } else {
+                req.setAttribute("error","该用户已被注册！");
+                req.getRequestDispatcher("/register.jsp").forward(req,resp);
+            }
         }else if("cuser".equals(userKind)){
             //添加企业用户
             CompanyUser companyUser = new CompanyUser();

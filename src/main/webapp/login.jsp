@@ -26,11 +26,11 @@
 <div class="container-fluid">
     <div class="header center-block">
         <div class="form-group error">
-            <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
-            <div class="col-sm-12">
-                <h5 class="text-center" style="color: red">${requestScope.error}</h5>
-            </div>
+        <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
+        <div class="col-sm-12">
+            <h5 class="text-center" style="color: red">${requestScope.error}</h5>
         </div>
+    </div>
         <div class="form-group">
             <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
             <div class="col-sm-12">

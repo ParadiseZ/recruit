@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class person_domain {
     private int pid;
-    private  int phone;
+    private String phone;
     private  String password;
     private  String pname;
     private  String psex;
-    private String pborn;
+    private Date pborn;
     private  String ptime;
     private  String pstate;
     private  String pschool;
@@ -22,7 +22,7 @@ public class person_domain {
     public person_domain() {
     }
 
-    public person_domain(int phone, String password, String pname, String psex, String pborn, String ptime, String pstate, String pschool, String pmajor, String exjob, String psrecord, String psal, String padvantage, String pemail) {
+    public person_domain(String phone, String password, String pname, String psex, Date pborn, String ptime, String pstate, String pschool, String pmajor, String exjob, String psrecord, String psal, String padvantage, String pemail) {
         this.phone = phone;
         this.password = password;
         this.pname = pname;
@@ -39,7 +39,7 @@ public class person_domain {
         this.pemail = pemail;
     }
 
-    public person_domain(int pid, int phone, String password, String pname, String psex, String pborn, String ptime, String pstate, String pschool, String pmajor, String exjob, String psrecord, String psal, String padvantage, String pemail) {
+    public person_domain(int pid, String phone, String password, String pname, String psex, Date pborn, String ptime, String pstate, String pschool, String pmajor, String exjob, String psrecord, String psal, String padvantage, String pemail) {
         this.pid = pid;
         this.phone = phone;
         this.password = password;
@@ -65,11 +65,11 @@ public class person_domain {
         this.pid = pid;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -97,11 +97,11 @@ public class person_domain {
         this.psex = psex;
     }
 
-    public String getPborn() {
+    public Date getPborn() {
         return pborn;
     }
 
-    public void setPborn(String pborn) {
+    public void setPborn(Date pborn) {
         this.pborn = pborn;
     }
 
@@ -185,7 +185,7 @@ public class person_domain {
                 ", password='" + password + '\'' +
                 ", pname='" + pname + '\'' +
                 ", psex='" + psex + '\'' +
-                ", pborn='" + pborn + '\'' +
+                ", pborn=" + pborn +
                 ", ptime='" + ptime + '\'' +
                 ", pstate='" + pstate + '\'' +
                 ", pschool='" + pschool + '\'' +

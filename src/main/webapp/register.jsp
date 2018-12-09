@@ -37,6 +37,12 @@
         <form method="post" action="/registerLogin.do" class="form-horizontal form-register center-block" onsubmit="return checkForm(this);">
             <input type="text" style="display: none" class="cheking" name="checking" value="0">
             <input type="text" style="display: none" class="userKind" name="userKind" value="puser">
+            <div class="form-group error">
+                <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
+                <div class="col-sm-12">
+                    <h5 class="text-center" style="color: red">${requestScope.error}</h5>
+                </div>
+            </div>
             <div class="form-group">
                 <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
                 <div class="col-sm-10">
