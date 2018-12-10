@@ -31,7 +31,9 @@ public class RegisterLoginDao implements IRegisterLoginDao {
         QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
         String sql = "select * from companyuser where username=?";
         List<CompanyUser> cUserListCheck = qr.query(sql,new BeanListHandler<>(CompanyUser.class),username);
-        if(cUserListCheck.isEmpty()){
+        sql="select * from person where pname=?";
+        List<person_domain> person_domainList = qr.query(sql,new BeanListHandler<>(person_domain.class),username);
+        if(cUserListCheck.isEmpty() && person_domainList.isEmpty()){
             return true;
         }else return false;
     }

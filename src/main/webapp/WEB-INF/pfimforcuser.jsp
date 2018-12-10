@@ -40,7 +40,7 @@
         </c:when>
     </c:choose>
 </head>
-<body>
+<body class="bodyAll">
     <div class="all">
     <!-- 头部开始 -->
     <div class="header">

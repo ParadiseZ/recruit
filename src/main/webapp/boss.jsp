@@ -32,6 +32,7 @@
 <c:forEach begin="0" end="0" items="${sessionScope.userImformation}" var="userImfor" step="1">
     <c:set var="userImforGet" value="${userImfor}" scope="request"></c:set>
     <%--<c:set var="userName" value="${userImfor.userName}" scope="session"></c:set>--%>
+
 </c:forEach>
 
 <div class="all">
