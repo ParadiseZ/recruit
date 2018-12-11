@@ -42,7 +42,6 @@ public class RegisterLoginServlet extends HttpServlet {
             req.setAttribute( "username" ,username);
             req.setAttribute( "password",password );
             boolean bb = iPersonService.checkinfor(username,password );
-
             if (bb){
                 req.getRequestDispatcher("/personal.jsp").forward(req,resp);
             } else {

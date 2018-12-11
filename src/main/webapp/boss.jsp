@@ -18,19 +18,23 @@
     <link rel="stylesheet" href="css/boss.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
-    <link rel="stylesheet" href="css/pfimforcuser.css">
     <script src="js/jquery-1.12.4.js"></script>
     <script src="js/bootstrap.js"></script>
-    <%--<script type="text/javascript" src="js/pfimforcuser.js"></script>--%>
     <style type="text/css">
         /* img{
             z-index: -1;
         } */
     </style>
+    <script type="text/javascript">
+        $(function () {
+
+        })
+    </script>
 </head>
 <body>
 <c:forEach begin="0" end="0" items="${sessionScope.userImformation}" var="userImfor" step="1">
     <c:set var="userImforGet" value="${userImfor}" scope="request"></c:set>
+    <%--<input type="text" class="need" name="pid" value="${userImforGet}" >--%>
     <%--<c:set var="userName" value="${userImfor.userName}" scope="session"></c:set>--%>
 </c:forEach>
 
@@ -45,15 +49,16 @@
             <div class="top1">
                 <c:choose>
                     <c:when test="${not empty userImforGet}">
+
                         <div class="dropdown">
                             <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    ${userImforGet.userName}
+                                ${userImforGet.pname}
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="/registerLogin.do?method=loginImfor">个人信息</a></li>
-                                <li class=""><a href="#">招聘信息</a></li>
-                                <li class=""><a href="/registerLogin.do?method=logout">退出登录</a></li>
+                                    <%--                        <li><a href=/pfimforcuser.jsp">个人信息</a></li>--%>
+                                <li><a class="imf" href="/updateperson.do?method=getBid" >个人信息</a></li>
+                                <li><a href="/login.jsp">退出登录</a></li>
                             </ul>
                         </div>
                     </c:when>

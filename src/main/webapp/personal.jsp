@@ -38,23 +38,19 @@
     <div class="head">
     <h3>完善您的基本信息</h3>
     </div>
-    <%
-    Object name = request.getAttribute("username");
-        Object password = request.getAttribute("password");
-    %>
 <div class="xinxi">在POSS直聘每一个完善信息的求职者，平均每天会遇到 5 个对你感兴趣的 Boss</div>
    <div class="from1">
-       <form class="form-horizontal" action="/rr.do?method=getpersonalmessage" method="post" onsubmit="return checkSubmit(this)">
-           <div class="form-group">
+       <form class="form-horizontal " action="/rr.do?method=getpersonalmessage" method="post" onsubmit="return checkSubmit(this)">
+           <div class="form-group  ">
                <label  class="col-sm-2 control-label">用户名</label>
                <div class="col-sm-10">
-                   <input type="" class="form-control"  name ="username" value="<%=name%>" placeholder="输入您的姓名" readonly>
+                   <input type="" class="form-control"  name ="username" value=${username} placeholder="输入您的姓名" readonly>
                </div>
            </div>
            <div class="form-group">
                <label class="col-sm-2 control-label">密码</label>
                <div class="col-sm-10">
-                   <input type="password" class="form-control" id="inputPassword3"name="password" value="<%=password%>"placeholder="输入您的密码"readonly>
+                   <input type="password" class="form-control" id="inputPassword3"name="password" value="${password}"placeholder="输入您的密码"readonly>
                </div>
            </div>
            <div class="form-group">
@@ -137,7 +133,7 @@
            <div class="form-group">
                <label  class="col-sm-2 control-label">期望的职位</label>
                <div class="col-sm-10">
-                   <input type=""name="exjob" class="form-control" id="exjob" placeholder="例如：软件开发工程师">
+                   <input type=""name="pexjob" class="form-control" id="exjob" placeholder="例如：软件开发工程师">
                </div>
            </div>
            <div class="form-group">
@@ -168,10 +164,15 @@
            </div>
            <div class="form-group">
                <div class="col-sm-offset-2 col-sm-10">
-                   <button type="submit" class="btn btn-primary btn-lg btn-block">注册并保存</button>
-                   <button type="reset" class="btn btn-default btn-lg btn-block">重置</button>
-                   <%--<button type="submit" class="btn btn-primary btn ">保存并注册</button>--%>
-                   <%--<button type="reset" class="btn btn-warning">重置</button>--%>
+                   <%--<button type="submit" class="btn btn-primary btn-lg btn-block">注册并保存</button>--%>
+                   <%--<button type="reset" class="btn btn-default btn-lg btn-block">重置</button>--%>
+                       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                       <button type="submit" class="btn btn-primary btn ">保存并注册</button>
+                       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                   <button type="reset" class="btn btn-warning">重置</button>
                </div>
            </div>
        </form>

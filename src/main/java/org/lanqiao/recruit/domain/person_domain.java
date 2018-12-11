@@ -13,7 +13,7 @@ public class person_domain {
     private  String pstate;
     private  String pschool;
     private  String pmajor;
-    private  String exjob;
+    private  String pexjob;
     private String psrecord;
     private String psal;
     private String padvantage;
@@ -22,7 +22,7 @@ public class person_domain {
     public person_domain() {
     }
 
-    public person_domain(String phone, String password, String pname, String psex, Date pborn, String ptime, String pstate, String pschool, String pmajor, String exjob, String psrecord, String psal, String padvantage, String pemail) {
+    public person_domain(String phone, String password, String pname, String psex, Date pborn, String ptime, String pstate, String pschool, String pmajor, String pexjob, String psrecord, String psal, String padvantage, String pemail) {
         this.phone = phone;
         this.password = password;
         this.pname = pname;
@@ -32,7 +32,7 @@ public class person_domain {
         this.pstate = pstate;
         this.pschool = pschool;
         this.pmajor = pmajor;
-        this.exjob = exjob;
+        this.pexjob = pexjob;
         this.psrecord = psrecord;
         this.psal = psal;
         this.padvantage = padvantage;
@@ -50,7 +50,7 @@ public class person_domain {
         this.pstate = pstate;
         this.pschool = pschool;
         this.pmajor = pmajor;
-        this.exjob = exjob;
+        this.pexjob = exjob;
         this.psrecord = psrecord;
         this.psal = psal;
         this.padvantage = padvantage;
@@ -137,12 +137,12 @@ public class person_domain {
         this.pmajor = pmajor;
     }
 
-    public String getExjob() {
-        return exjob;
+    public String getPexjob() {
+        return pexjob;
     }
 
-    public void setExjob(String exjob) {
-        this.exjob = exjob;
+    public void setPexjob(String pexjob) {
+        this.pexjob = pexjob;
     }
 
     public String getPsrecord() {
@@ -190,7 +190,7 @@ public class person_domain {
                 ", pstate='" + pstate + '\'' +
                 ", pschool='" + pschool + '\'' +
                 ", pmajor='" + pmajor + '\'' +
-                ", exjob='" + exjob + '\'' +
+                ", exjob='" + pexjob + '\'' +
                 ", psrecord='" + psrecord + '\'' +
                 ", psal='" + psal + '\'' +
                 ", padvantage='" + padvantage + '\'' +
