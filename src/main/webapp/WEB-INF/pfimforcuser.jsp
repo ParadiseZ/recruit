@@ -150,7 +150,7 @@
                             <button type="button" class="btn btn-info modify">点击修改</button>
                             <button type="submit" class="btn btn-info saveImfor" style="display: none">保存信息</button>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button type="button" class="btn btn-info">修改公司信息</button>
+                            <button type="button" class="btn btn-info modifyCom"><a href="/gongsijainjie.jsp">修改公司信息</a></button>
                         </c:otherwise>
                         </c:choose>
                     </div>

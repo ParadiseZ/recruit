@@ -1,4 +1,9 @@
 $(function () {
+    $(".modifyCom").click(function () {
+        $.ajax({
+            url:"/gongsijainjie.jsp"
+        })
+    })
 })
 
 //jquery验证邮箱
