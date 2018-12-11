@@ -58,6 +58,7 @@ public class RegisterLoginServlet extends HttpServlet {
                 CompanyUser companyUser = new CompanyUser();
                 companyUser.setUserName(username);
                 companyUser.setPassword(password);
+                companyUser.setPhone(0);
                 List<CompanyUser> companyUserList = new ArrayList<>();
                 companyUserList.add(companyUser);
 //            httpSession.setAttribute("userImformation",companyUserList);
@@ -93,6 +94,8 @@ public class RegisterLoginServlet extends HttpServlet {
                     long phoneAfter = Long.parseLong(phoneBefore);
                     CompanyUser cUser = new CompanyUser(username,password,phoneAfter,corporation,companyname,email,job);
                     registerService.addCuser(cUser);
+                    req.setAttribute("error","注册成功！");
+                    req.getRequestDispatcher("/login.jsp").forward(req,resp);
                 }
             }else if("modify".equals(method)){
                 String usernameOld = req.getParameter("usernameOld");
@@ -134,7 +137,17 @@ public class RegisterLoginServlet extends HttpServlet {
             }
         }else if(resultMap.containsKey(2)){
             List<person_domain> person_domainList = (List<person_domain>) resultMap.get(2);
+
+
+
+
+
             httpSession.setAttribute("userImformation",person_domainList);
+/*            try {
+                resp.sendRedirect("/boss.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
             try {
                 req.getRequestDispatcher("/boss.jsp").forward(req,resp);
             } catch (ServletException e) {
@@ -161,7 +174,7 @@ public class RegisterLoginServlet extends HttpServlet {
             long phoneAfter = Long.parseLong(phoneBefore);
             int id = Integer.parseInt(getId);
             CompanyUser cUser = new CompanyUser(id,username,password,phoneAfter,corporation,companyname,email,job);
-            List<CompanyUser> companyUserList = new ArrayList<CompanyUser>();
+            List<CompanyUser> companyUserList = new ArrayList<>();
             companyUserList.add(cUser);
             httpSession.setAttribute("userImformation",companyUserList);
             req.setAttribute("success","修改成功！");

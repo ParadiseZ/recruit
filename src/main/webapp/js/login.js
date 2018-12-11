@@ -19,7 +19,7 @@ $(function () {
         type : 2,		//类型
         vOffset : 5,	//误差量，根据需求自行调整
         vSpace : 5,	//间隔
-        imgName : ['1.jpg', '2.jpg'],
+        imgName : ['3.jpg', '4.jpg','5.jpg','6.jpg','7.jpg'],
         imgSize : {
             width: '400px',
             height: '200px',

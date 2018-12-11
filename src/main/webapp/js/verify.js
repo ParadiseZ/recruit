@@ -152,7 +152,7 @@
         	type : 1,
         	vOffset: 5,
             vSpace : 5,
-            imgName : ['1.jpg', '2.jpg'],
+            imgName : ['3.jpg', '4.jpg','5.jpg','6.jpg','7.jpg'],
             imgSize : {
 	        	width: '400px',
 	        	height: '200px',
@@ -470,7 +470,7 @@
         	defaultNum : 4,	//默认的文字数量
 		    checkNum : 3,	//校对的文字数量
 		    vSpace : 5,	//间隔
-        	imgName : ['1.jpg', '2.jpg'],
+        	imgName : ['3.jpg', '4.jpg','5.jpg','6.jpg','7.jpg'],
         	imgSize : {
 	        	width: '400px',
 	        	height: '200px',

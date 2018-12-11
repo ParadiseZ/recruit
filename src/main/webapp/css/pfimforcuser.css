@@ -1,6 +1,10 @@
 .all{
     zoom: 1;
 }
+.bodyAll{
+    zoom: 1;
+    background-color: rgb(240,240,248);
+}
 .top,.box,.box1,.form-div{
     position: relative;
 }
@@ -14,11 +18,15 @@
 .form-div{
     width: 1260px;
     height: 600px;
-    background-color: #5dd5c8;
+    border:solid darkslategray;
+    border-bottom: 1px;
+    border-top: none;
+    border-left: 1px;
+    border-right: 1px;
+    box-shadow: darkgrey 10px 10px 30px 5px ;//边框阴影
 }
 .form-style{
     width: 1000px;
     height: 540px;
-    background-color: yellow;
     position: relative;
 }
