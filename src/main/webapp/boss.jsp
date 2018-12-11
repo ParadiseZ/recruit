@@ -29,7 +29,7 @@
     </style>
 </head>
 <body>
-<c:forEach begin="0" end="0" items="${sessionScope.userImformation}" var="userImfor" step="1">
+<c:forEach begin="0" end="0" items="${userImformation}" var="userImfor" step="1">
     <c:set var="userImforGet" value="${userImfor}" scope="request"></c:set>
     <%--<c:set var="userName" value="${userImfor.userName}" scope="session"></c:set>--%>
 
@@ -45,7 +45,7 @@
             <div class="box">公司</div>
             <div class="top1">
                 <c:choose>
-                    <c:when test="${not empty userImforGet}">
+                    <c:when test="${not empty userImforGet.userName}">
                         <div class="dropdown">
                             <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     ${userImforGet.userName}
@@ -58,6 +58,21 @@
                             </ul>
                         </div>
                     </c:when>
+<%--                    <input value="${userImforGet}">--%>
+<%--                    <c:when test="${not empty userImforGet.pame}">
+                        <div class="dropdown">
+                            <a id="" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    ${userImforGet.pname}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                    &lt;%&ndash;                        <li><a href=/pfimforcuser.jsp">个人信息</a></li>&ndash;%&gt;
+                                <li><a class="imf" href="/updateperson.do?method=getBid" >个人信息</a></li>
+                                <li><a href="/login.jsp">退出登录</a></li>
+                            </ul>
+                        </div>
+
+                    </c:when>--%>
                     <c:otherwise>
                         <div class="box2">上传简历</div>
                         <div class="box2">我要招聘</div>
@@ -85,11 +100,14 @@
                     <option value="xiala">深圳</option>
                 </select>
             </div>
-            <div class="sou2">
-                <!-- <input type="text" name="name" style="width:330px; height:30px; padding-left: 2px;padding-top: 7px" /> -->
-                <input type="text" name="query" style="margin-left: 0px;margin-top: 0px;padding-right: 245px;padding-top: 12px;padding-bottom: 12px" placeholder="搜索职位、公司">
-            </div>
-            <div class="logo1"></div>
+            <form method="post" action="/search.do?method=searchImfor">
+                <div class="sou2">
+                    <!-- <input type="text" name="name" style="width:330px; height:30px; padding-left: 2px;padding-top: 7px" /> -->
+                    <input type="text" name="searchInput" style="margin-left: 0px;margin-top: 0px;padding-right: 245px;padding-top: 12px;padding-bottom: 12px" placeholder="搜索职位、公司">
+                    <button type="submit" value="搜索">搜索</button>
+                </div>
+                <div class="logo1"><button type="submit" value="搜索">搜索</button></div>
+            </form>
             <div class="work">
                 <select  style="width: 100px;height: 44px;">
                     <option value="xiala"></option>

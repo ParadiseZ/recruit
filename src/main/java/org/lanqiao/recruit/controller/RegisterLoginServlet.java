@@ -138,7 +138,17 @@ public class RegisterLoginServlet extends HttpServlet {
             }
         }else if(resultMap.containsKey(2)){
             List<person_domain> person_domainList = (List<person_domain>) resultMap.get(2);
+
+
+
+
+
             httpSession.setAttribute("userImformation",person_domainList);
+/*            try {
+                resp.sendRedirect("/boss.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
             try {
                 req.getRequestDispatcher("/boss.jsp").forward(req,resp);
             } catch (ServletException e) {
