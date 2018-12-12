@@ -43,18 +43,18 @@
         <form method="post" action="/registerLogin.do" class="form-horizontal form-register center-block" onsubmit="return checkForm(this);">
             <input type="text" style="display: none" class="cheking" name="checking" value="0">
             <input type="text" style="display: none" class="userKind" name="userKind" value="usernameLogin">
-            <div class="form-group">
-                <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
+<%--            <div class="form-group">
+                &lt;%&ndash;<label for="inputEmail3" class="col-sm-2 control-label"></label>&ndash;%&gt;
                 <div class="col-sm-10">
                     <button type="button" class="btn btn-info btnChoose1" name="">用户名登录</button>
                     <button type="button" class="btn btn-default btnChoose2" name="">邮箱登录</button>
                 </div>
-            </div>
+            </div>--%>
 
             <div class="form-group">
                 <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="username" name="username" placeholder="用户名">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="用户名/邮箱">
                 </div>
             </div>
             <div class="form-group" id="mpanel4">
@@ -87,4 +87,23 @@
     </div>
 </div>
 </body>
+<script>
+    function checkForm(form) {
+        if($(".cheking").attr("value")==0){
+            alert("请进行滑块验证！")
+            return false;
+        }
+        if(form.username.value==""){
+            alert("用户名不能为空！");
+            form.username.focus();
+            return false;
+        }
+        if(form.password.value==""){
+            alert("密码不能为空！");
+            form.password.focus()
+            return false;
+        }
+        return true;
+    }
+</script>
 </html>

@@ -50,16 +50,44 @@ public class RegisterLoginDao implements IRegisterLoginDao {
         companyUserList = queryRunner.query(sql,companyUser,username,password);
         //查询企业用户表中是否有该用户
         if(companyUserList.isEmpty()){
-            sql = "select * from person where pname=? and password=?";
-            person_domainList = queryRunner.query(sql,person_domain,username,password);
-            //查询个人用户表中是否有该用户
-            if(person_domainList.isEmpty()){
-                resultMap.put(0,0);
+            sql = "select * from companyuser where email=? and password=?";
+            companyUserList = queryRunner.query(sql,companyUser,username,password);
+            if(companyUserList.isEmpty()){
+                sql="select * from companyuser where phone=? and password=?";
+                companyUserList = queryRunner.query(sql,companyUser,username,password);
+                if(companyUserList.isEmpty()){
+                    sql = "select * from person where pname=? and password=?";
+                    person_domainList = queryRunner.query(sql,person_domain,username,password);
+                    //查询个人用户表中是否有该用户
+                    if(person_domainList.isEmpty()){
+                        sql = "select * from person where pemail=? and password=?";
+                        person_domainList = queryRunner.query(sql,person_domain,username,password);
+                        if(person_domainList.isEmpty()){
+                            sql = "select * from person where phone=? and password=?";
+                            person_domainList = queryRunner.query(sql,person_domain,username,password);
+                            if(person_domainList.isEmpty()){
+                                resultMap.put(0,0);
+                                return resultMap;
+                            }else {
+                                resultMap.put(2,person_domainList);
+                                return  resultMap;
+                            }
+                        }else {
+                            resultMap.put(2,person_domainList);
+                            return  resultMap;
+                        }
+                    }else{
+                        //将该个人用户信息查询出来并保存
+                        resultMap.put(2,person_domainList);
+                        return  resultMap;
+                    }
+                }else {
+                    resultMap.put(1,companyUserList);
+                    return resultMap;
+                }
+            }else {
+                resultMap.put(1,companyUserList);
                 return resultMap;
-            }else{
-                //将该个人用户信息查询出来并保存
-                resultMap.put(2,person_domainList);
-                return  resultMap;
             }
         }else {
             //将该企业用户查询出来并保存

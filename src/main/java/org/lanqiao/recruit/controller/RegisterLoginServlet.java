@@ -128,6 +128,7 @@ public class RegisterLoginServlet extends HttpServlet {
     public void getImformationFromService(HttpServletRequest req, HttpServletResponse resp,Map resultMap,HttpSession httpSession){
         if(resultMap.containsKey(1)){
             List<CompanyUser> companyUserList = (List<CompanyUser>) resultMap.get(1);
+            httpSession.setAttribute("userKindChoose","cUser");
             httpSession.setAttribute("userImformation",companyUserList);
             try {
                 req.getRequestDispatcher("/boss.jsp").forward(req,resp);
@@ -139,10 +140,12 @@ public class RegisterLoginServlet extends HttpServlet {
         }else if(resultMap.containsKey(2)){
             List<person_domain> person_domainList = (List<person_domain>) resultMap.get(2);
 
+            for(person_domain ps:person_domainList){
+                System.out.println(ps);
+            }
 
 
-
-
+            httpSession.setAttribute("userKindChoose","pUser");
             httpSession.setAttribute("userImformation",person_domainList);
 /*            try {
                 resp.sendRedirect("/boss.jsp");

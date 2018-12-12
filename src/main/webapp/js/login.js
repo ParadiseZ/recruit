@@ -1,5 +1,5 @@
 $(function () {
-    $(".btnChoose1").click(function () {
+/*    $(".btnChoose1").click(function () {
         $(this).addClass("btn-info").removeClass("btn-default");
         $(".userKind").attr("value","usernameLogin");
         $("#username").attr("placeholder","用户");
@@ -10,10 +10,10 @@ $(function () {
         $(".userKind").attr("value","emailLogin");
         $("#username").attr("placeholder","邮箱");
         $(".btnChoose1").removeClass("btn-info").addClass("btn-default").attr("value","")
-    })
+    })*/
     $(".control").click(function () {
-        $(".control").hide()
-        $("#mpanel4").show()
+        $(".control").hide();
+        $("#mpanel4").show();
     })
     $('#mpanel4').slideVerify({
         type : 2,		//类型
@@ -46,22 +46,6 @@ $(function () {
         }
 
     });
+})
 
-});
-function checkForm(form) {
-    if($(".cheking").attr("value")==0){
-        alert("请进行滑块验证！")
-        return false;
-    }
-    if(form.username.value==""){
-        alert("用户名不能为空！");
-        form.username.focus();
-        return false;
-    }
-    if(form.password.value==""){
-        alert("密码不能为空！");
-        form.password.focus()
-        return false;
-    }
-    return true;
-}
+/*});*/
