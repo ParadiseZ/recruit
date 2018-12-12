@@ -20,14 +20,16 @@ public class personServiecImpl implements IPersonService {
         }
         return null;
     }
-//通过用户名查找数据库中的信息
+//通过id查找数据库中的信息
     @Override
-    public void findalbyYonghuming() {
+    public person_domain findalbyid(int id) {
+        person_domain ps =null;
         try {
-            dao.personalmessage();
+            ps= dao.personalmessage(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return ps;
     }
 //判断该用户是否登陆
     @Override
@@ -51,15 +53,15 @@ public class personServiecImpl implements IPersonService {
     }
     //修改个人信息
     @Override
-    public boolean updatePerson(String phone, String password, String psex, String ptime, String pstate, String pmajor, String pexjob, String psrecord, String psal, String padvantage, String pemail) {
+    public boolean updatePerson(person_domain personDomain) {
         boolean upp=true;
         try {
-            upp =dao.updateperson( phone, password, psex,  ptime, pstate,  pmajor, pexjob, psrecord, psal, padvantage, pemail );
+            upp =dao.updateperson(personDomain );
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return upp;
     }
 
 }
