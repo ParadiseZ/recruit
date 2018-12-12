@@ -54,7 +54,7 @@
             <div class="form-group">
                 <%--<label for="inputEmail3" class="col-sm-2 control-label"></label>--%>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="username" name="username" placeholder="用户名/邮箱">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="用户名/邮箱/手机号">
                 </div>
             </div>
             <div class="form-group" id="mpanel4">
