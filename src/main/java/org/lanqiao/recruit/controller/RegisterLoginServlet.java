@@ -139,11 +139,6 @@ public class RegisterLoginServlet extends HttpServlet {
         }else if(resultMap.containsKey(2)){
             List<person_domain> person_domainList = (List<person_domain>) resultMap.get(2);
 
-            for(person_domain ps:person_domainList){
-                System.out.println(ps);
-            }
-
-
             httpSession.setAttribute("userKindChoose","pUser");
             httpSession.setAttribute("userImformation",person_domainList);
 /*            try {
