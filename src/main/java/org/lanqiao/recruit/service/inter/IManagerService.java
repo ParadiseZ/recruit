@@ -19,4 +19,10 @@ public interface IManagerService {
 
     //统计用户数量
     public int countNumOfUser(String userKind);
+
+    //批量删除用户信息
+    public void deleteAll(String userKind,int a[]);
+
+    //分页查询
+    public List getPageImfor(String userKind,int startIndex,int pageSize);
 }

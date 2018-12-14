@@ -1,12 +1,16 @@
 package org.lanqiao.recruit.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.support.hsf.HSFJSONUtils;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.lanqiao.recruit.domain.CompanyUser;
 import org.lanqiao.recruit.domain.CountOfUserNum;
 import org.lanqiao.recruit.domain.ManagerUser;
 import org.lanqiao.recruit.domain.person_domain;
 import org.lanqiao.recruit.service.imp.ManagerService;
 import org.lanqiao.recruit.service.inter.IManagerService;
+import org.lanqiao.recruit.utils.PageModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -71,7 +75,8 @@ public class ManagerServlet extends HttpServlet {
                 String username = req.getParameter("input-username");
                 List<person_domain> person_domainList = ( List<person_domain>)managerService.findImforUser("pUser",username);
                 req.setAttribute("userImfor",person_domainList);
-                getAndSetNum_user(req, resp);
+                CountOfUserNum cs = getAndSetNum_user(req, resp);
+                cs.setpUserNum(2);
                 req.getRequestDispatcher("/member-list.jsp").forward(req,resp);
             }
             if("searchCuserImfor".equals(methodGet)){
@@ -79,6 +84,52 @@ public class ManagerServlet extends HttpServlet {
                 List<CompanyUser> companyUserList = ( List<CompanyUser>)managerService.findImforUser("cUser",username);
                 req.setAttribute("userImforC",companyUserList);
                 getAndSetNum_user(req, resp);
+                req.getRequestDispatcher("/member-del.jsp").forward(req,resp);
+            }
+            if("deleteAllpUser".equals(methodGet)){
+                String attr =  req.getParameter("attr");
+                JSONArray jsonA = JSONArray.fromObject(JSON.parse(attr));
+                int arrary[] = new int[jsonA.size()];
+                for(int i = 0; i<jsonA.size() ;i++){
+                    arrary[i] = Integer.parseInt(jsonA.get(i).toString());
+                }
+                managerService.deleteAll("pUser",arrary);
+                PrintWriter out = resp.getWriter();
+                String is = JSON.toJSONString("eppea");
+                out.print(is);
+            }
+            if("deleteAllcUser".equals(methodGet)){
+                String attr =  req.getParameter("attr");
+                JSONArray jsonA = JSONArray.fromObject(JSON.parse(attr));
+                int arrary[] = new int[jsonA.size()];
+                for(int i = 0; i<jsonA.size() ;i++){
+                    arrary[i] = Integer.parseInt(jsonA.get(i).toString());
+                }
+                managerService.deleteAll("cUser",arrary);
+                PrintWriter out = resp.getWriter();
+                String is = JSON.toJSONString("eppea");
+                out.print(is);
+            }
+            if("findPageImforpUser".equals(methodGet)){
+                String currentPage = req.getParameter("currentPage");
+                int pageNum = Integer.parseInt(currentPage);
+                int pUserNum = managerService.countNumOfUser("pUser");
+                PageModel pm = new PageModel(pageNum,pUserNum,7);
+                List<person_domain> person_domainList = (List<person_domain>)managerService.getPageImfor("pUser",pm.getStartIndex(),pm.getPageSize());
+                pm.setRecords(person_domainList);
+                req.setAttribute("userImfor",person_domainList);
+                req.setAttribute("pm",pm);
+                req.getRequestDispatcher("/member-list.jsp").forward(req,resp);
+            }
+            if("findPageImforcUser".equals(methodGet)){
+                String currentPage = req.getParameter("currentPage");
+                int pageNum = Integer.parseInt(currentPage);
+                int pUserNum = managerService.countNumOfUser("cUser");
+                PageModel pm = new PageModel(pageNum,pUserNum,7);
+                List<CompanyUser> companyUserList = (List<CompanyUser>)managerService.getPageImfor("cUser",pm.getStartIndex(),pm.getPageSize());
+                pm.setRecords(companyUserList);
+                req.setAttribute("userImforC",companyUserList);
+                req.setAttribute("pm",pm);
                 req.getRequestDispatcher("/member-del.jsp").forward(req,resp);
             }
         }
@@ -108,12 +159,13 @@ public class ManagerServlet extends HttpServlet {
     };
 
     //获取用户数量
-    public void getAndSetNum_user(HttpServletRequest req, HttpServletResponse resp){
+    public CountOfUserNum getAndSetNum_user(HttpServletRequest req, HttpServletResponse resp){
         HttpSession httpSession = req.getSession();
         int pUserNum = managerService.countNumOfUser("pUser");
         int cUserNum = managerService.countNumOfUser("cUser");
         int mUserNum = managerService.countNumOfUser("mUser");
         CountOfUserNum countOfUserNum = new CountOfUserNum(pUserNum,cUserNum,mUserNum);
         httpSession.setAttribute("countOfUserNum",countOfUserNum);
+        return countOfUserNum;
     }
 }

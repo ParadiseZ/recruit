@@ -62,4 +62,24 @@ public class ManagerService implements IManagerService {
         }
         return num;
     }
+
+    @Override
+    public void deleteAll(String userKind, int[] a) {
+        try {
+            managerDao.deleteAll(userKind,a);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public List getPageImfor(String userKind, int startIndex, int pageSize) {
+        List resultFind = null;
+        try {
+            resultFind = managerDao.getPageImfor(userKind,startIndex,pageSize);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultFind;
+    }
 }

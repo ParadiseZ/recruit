@@ -150,7 +150,7 @@
                             <button type="button" class="btn btn-info modify">点击修改</button>
                             <button type="submit" class="btn btn-info saveImfor" style="display: none">保存信息</button>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button type="button" class="btn btn-info modifyCom"><a href="/gongsijainjie.jsp">修改公司信息</a></button>
+                            <button type="button" class="btn btn-info" onclick="window.open('/gongsijainjie.jsp')">修改公司信息</button>
                         </c:otherwise>
                         </c:choose>
                     </div>
@@ -164,22 +164,26 @@
     </div>
 
 <script>
+    $(function () {
+        $(".box1").click(function () {
+            window.open("/boss.jsp")
+        })
+    })
     function checkSubmitEmailPhone(form) {
         if ($("#email").val() == "") {
 //$("#confirmMsg").html("<font color='red'>邮箱地址不能为空！</font>");
-            $(".warning").val("邮箱地址不能为空！");
             alert("邮箱地址不能为空!");
             $("#email").focus();
             return false;
         }
         if (!$("#email").val().match(/^\w+@\w+\.\w+(\.\w+)*$/)) {
-            $(".warning").val("邮箱格式不正确！");
+            alert("邮箱格式不正确！")
 //$("#confirmMsg").html("<font color='red'>邮箱格式不正确！请重新输入！</font>");
             $("#email").focus();
             return false;
         }
         if ($("#phone").val() == "") {
-            $(".warning").val("手机号码不能为空！")
+            alert("手机号码不能为空！");
             //$("#moileMsg").html("<font color='red'>手机号码不能为空！</font>");
             $("#phone").focus();
             return false;
@@ -187,13 +191,13 @@
 
         if (!$("#phone").val().match(/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/)) {
             alert("手机号码格式不正确！");
-            $(".warning").val("手机号码格式不正确！")
+            // $(".warning").val("手机号码格式不正确！")
             //$("#moileMsg").html("<font color='red'>手机号码格式不正确！请重新输入！</font>");
             $("#phone").focus();
             return false;
         }
         return true;
-    }v
+    }
 </script>
 </body>
 </html>

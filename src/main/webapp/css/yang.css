@@ -41,17 +41,23 @@
 .lb6{
     font-size: 21px;
     font-weight: 400;
-    position: relative;left:546px;top:350px;
+    position: relative;left:547px;top:350px;
 }
 .lb7{
     font-size: 21px;
     font-weight: 400;
-    position: relative;left:548px;top:320px;
+    position: relative;left:660px;top:320px;
 }
+.lb8{
+    font-size: 21px;
+    font-weight: 400;
+    position: relative;left:550px;top:340px;
+}
+
 .lb9{
     font-size: 21px;
     font-weight: 400;
-    position: relative;left:660px;top:283px;
+    position: relative;left:550px;top:360px;
 }
 
 /*
