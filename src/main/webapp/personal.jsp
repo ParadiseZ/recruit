@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>完善信息</title>
     <link rel="stylesheet" href="css/personal.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
@@ -38,24 +38,24 @@
     <div class="head">
     <h3>完善您的基本信息</h3>
     </div>
-<div class="xinxi">在POSS直聘每一个完善信息的求职者，平均每天会遇到 5 个对你感兴趣的 Boss</div>
+    <div class="xinxi"><h4>在POSS直聘每一个完善信息的求职者，平均每天会遇到 5 个对你感兴趣的 Boss</h4></div>
    <div class="from1">
        <form class="form-horizontal " action="/rr.do?method=getpersonalmessage" method="post" onsubmit="return checkSubmit(this)">
-           <div class="form-group  ">
-               <label  class="col-sm-2 control-label">用户名</label>
-               <div class="col-sm-10">
-                   <input type="" class="form-control"  name ="username" value=${username} placeholder="输入您的姓名" readonly>
+           <div class="form-group " id="yonghu">
+               <label  class="col-sm-2 control-label">用户名称</label>
+               <div class="col-sm-10 form-inline ">
+                   <input type="" class="form-control "  name ="username" value="${username}" placeholder="输入您的姓名" readonly>
                </div>
            </div>
            <div class="form-group">
-               <label class="col-sm-2 control-label">密码</label>
-               <div class="col-sm-10">
+               <label class="col-sm-2 control-label">您的密码</label>
+               <div class="col-sm-10 form-inline">
                    <input type="password" class="form-control" id="inputPassword3"name="password" value="${password}"placeholder="输入您的密码"readonly>
                </div>
            </div>
            <div class="form-group">
-               <label  class="col-sm-2 control-label" >性别</label>
-           <div class="col-sm-10">
+               <label  class="col-sm-2 control-label" >选择性别</label>
+           <div class="col-sm-10 form-inline">
                <select class="form-control" id="sex" name="sex">
                    <option></option>
                    <option>男</option>
@@ -66,24 +66,24 @@
            <div class="form-group" >
                <label  class="col-sm-2 control-label" >出生年月</label>
 
-           <div class="input-append date form_datetime" >
-               <input size="16"  id="born" name="born"type="text" value="" readonly maxview>
-               <span class="add-on"><i class="icon-th"></i></span>
+           <div class="input-append date form_datetime form-inline" >
+               <input size="16"  id="born" name="born"type="text" class="form-control" value="选择出生年月"  maxview>
+               <span class="add-on"><i class="icon-th glyphicon glyphicon-menu-down"></i></span>
            </div>
            </div>
 
            <div class="form-group">
                <label  class="col-sm-2 control-label" >工作时间</label>
 
-           <div class="input-append date form_datetime">
-               <input size="16"  id="worktime"type="text" name="gtime" value="" readonly maxview>
-               <span class="add-on"><i class="icon-th"></i></span>
+           <div class="input-append date form_datetime form-inline">
+               <input size="16"  id="worktime"type="text" name="gtime" class="form-control" placeholder="" value="选择工作时间"  maxview>
+               <span class="add-on"><i class="icon-th glyphicon glyphicon-menu-down"></i></span>
            </div>
            </div>
 
            <div class="form-group">
-               <label  class="col-sm-2 control-label">当前求职状态</label>
-               <div class="col-sm-10">
+               <label  class="col-sm-2 control-label">求职状态</label>
+               <div class="col-sm-10 form-inline">
                    <select class="form-control" name="position"  id="position">
                        <option>离职-随时到岗</option>
                        <option>在职-暂不考虑</option>
@@ -94,25 +94,25 @@
            </div>
            <div class="form-group">
                <label  class="col-sm-2 control-label">联系电话</label>
-               <div class="col-sm-10">
+               <div class="col-sm-10 form-inline">
                    <input type="" name=phone class="form-control"id="phone" placeholder="请留下您的联系方式">
                </div>
            </div>
            <div class="form-group">
-               <label  class="col-sm-2 control-label">邮箱</label>
-               <div class="col-sm-10">
+               <label  class="col-sm-2 control-label">填写邮箱</label>
+               <div class="col-sm-10 form-inline">
                    <input type="" class="form-control" id="email" name="emial" placeholder="Email">
                </div>
            </div>
            <div class="form-group">
                <label  class="col-sm-2 control-label">学校名称</label>
-               <div class="col-sm-10">
+               <div class="col-sm-10 form-inline">
                    <input type=""  name="pschool" id="school" class="form-control"  placeholder="例如：北京大学">
                </div>
            </div>
            <div class="form-group">
-               <label   class="col-sm-2 control-label">您的学历</label>
-               <div class="col-sm-10">
+               <label   class="col-sm-2 control-label">选择学历</label>
+               <div class="col-sm-10 form-inline">
                    <select class="form-control"  id="xueli" name="xueli">
                        <option>初中及以下</option>
                        <option>中专/中技</option>
@@ -126,20 +126,20 @@
            </div>
            <div class="form-group">
                <label  class="col-sm-2 control-label">所学专业</label>
-               <div class="col-sm-10">
+               <div class="col-sm-10 form-inline">
                    <input type="" name="zhuanye" id="zhuanye" class="form-control"  placeholder="例如：信息与计算科学">
                </div>
            </div>
            <div class="form-group">
-               <label  class="col-sm-2 control-label">期望的职位</label>
-               <div class="col-sm-10">
+               <label  class="col-sm-2 control-label">期望职位</label>
+               <div class="col-sm-10 form-inline">
                    <input type=""name="pexjob" class="form-control" id="exjob" placeholder="例如：软件开发工程师">
                </div>
            </div>
            <div class="form-group">
-               <label  class="col-sm-2 control-label">期望的薪资范围</label>
-               <div class="col-sm-10">
-                   <select class="form-control" name="exsal"  id="exsal">
+               <label  class="col-sm-2 control-label">期望薪资</label>
+               <div class="col-sm-10 form-inline">
+                   <select class="form-control" name="exsal"  id="exsal" >
                        <option>2K</option>
                        <option>3K</option>
                        <option>4k</option>

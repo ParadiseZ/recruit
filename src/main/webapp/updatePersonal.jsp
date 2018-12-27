@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/personal.js"></script>
     <script type="text/javascript"src="js/bootstrap-datetimepicker.js"></script>
     <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
     <script type="text/javascript">
@@ -64,25 +65,25 @@
 
     <div class="xinxi">在POSS直聘每一个完善信息的求职者，平均每天会遇到 5 个对你感兴趣的 Boss</div>
     <div class="from1 ">
-        <form class="form-horizontal" action="/updateperson.do?method=updateperson" method="post"id="uploadForm">
+        <form class="form-horizontal" action="/updateperson.do" method="post"id="uploadForm">
 
             <input type="text" value="${userImforGet.pid}" name="pid" style="display: none">
 
-            <div class="form-group">
-                <label  class="col-sm-2 control-label">用户名</label>
-                <div class="col-sm-10">
+            <div class="form-group ">
+                <label  class="col-sm-2 control-label">用户名称</label>
+                <div class="col-sm-3 ">
                     <input class="username" type="text" class="form-control" value="${userImforGet.pname}" name ="username"  placeholder="" >
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">密码</label>
-                <div class="col-sm-10">
+                <label class="col-sm-2 control-label">您的密码</label>
+                <div class="col-sm-3">
                     <input class="password" type="password" class="form-control" value="${userImforGet.password}"id="inputPassword3"name="password" placeholder="输入您的密码" >
                 </div>
             </div>
             <div class="form-group">
-                <label  class="col-sm-2 control-label" >性别</label>
-                <div class="col-sm-10">
+                <label  class="col-sm-2 control-label" >选择性别</label>
+                <div class="col-sm-3">
                     <select class="form-control"type="text" name="sex">
                         <option <c:if test="${userImforGet.psex==''}"> selected</c:if> ></option>
                         <option <c:if test="${userImforGet.psex=='男'}"> selected</c:if> >男</option>
@@ -93,9 +94,9 @@
             <div class="form-group" >
                 <label  class="col-sm-2 control-label" >出生年月</label>
 
-                <div class="input-append date form_datetime" >
+                <div class="input-append date form_datetime form-inline" >
                     <input size="16"  name="born"type="text"value="${userImforGet.pborn}"   >
-                    <span class="add-on"><i class="icon-th"></i></span>
+                    <span class="add-on"><i class="icon-th glyphicon glyphicon-menu-down"></i></span>
                 </div>
             </div>
 
@@ -104,13 +105,13 @@
 
                 <div class="input-append date form_datetime">
                     <input size="16" type="text" name="gtime" value="${userImforGet.ptime}"  >
-                    <span class="add-on"><i class="icon-th"></i></span>
+                    <span class="add-on"><i class="icon-th glyphicon glyphicon-menu-down"></i></span>
                 </div>
             </div>
 
             <div class="form-group">
-                <label  class="col-sm-2 control-label">当前求职状态</label>
-                <div class="col-sm-10">
+                <label  class="col-sm-2 control-label">求职状态</label>
+                <div class="col-sm-3">
                     <select class="form-control"type="text" name="position">
                         <option <c:if test="${userImforGet.pstate=='离职-随时到岗'}"> selected</c:if>>离职-随时到岗</option>
                         <option <c:if test="${userImforGet.pstate=='在职-暂不考虑'}"> selected</c:if>>在职-暂不考虑</option>
@@ -121,25 +122,25 @@
             </div>
             <div class="form-group">
                 <label  class="col-sm-2 control-label">联系电话</label>
-                <div class="col-sm-10">
+                <div class="col-sm-3">
                     <input type="text" value="${userImforGet.phone}" name=phone class="form-control" placeholder="">
                 </div>
             </div>
             <div class="form-group">
-                <label  class="col-sm-2 control-label">邮箱</label>
-                <div class="col-sm-10">
+                <label  class="col-sm-2 control-label">您的邮箱</label>
+                <div class="col-sm-3">
                     <input type="email" class="form-control" id="inputEmail3" value="${userImforGet.pemail}" name="emial" placeholder="Email">
                 </div>
             </div>
             <div class="form-group">
                 <label  class="col-sm-2 control-label">学校名称</label>
-                <div class="col-sm-10">
+                <div class="col-sm-3">
                     <input type="text"  name="pschool" class="form-control" value="${userImforGet.pschool}" placeholder="例如：北京大学">
                 </div>
             </div>
             <div class="form-group">
                 <label   class="col-sm-2 control-label">您的学历</label>
-                <div class="col-sm-10">
+                <div class="col-sm-3">
                     <select class="form-control"type="text" name="xueli" >
                         <option <c:if test="${userImforGet.pmajor=='初中及以下'}"> selected</c:if>>初中及以下</option>
                         <option <c:if test="${userImforGet.pmajor=='中专/中技'}"> selected</c:if>>中专/中技</option>
@@ -153,19 +154,19 @@
             </div>
             <div class="form-group">
                 <label  class="col-sm-2 control-label">所学专业</label>
-                <div class="col-sm-10">
+                <div class="col-sm-3">
                     <input type="text" name="zhuanye" value="${userImforGet.psrecord}" class="form-control" >
                 </div>
             </div>
             <div class="form-group">
-                <label  class="col-sm-2 control-label">期望的职位</label>
-                <div class="col-sm-10">
+                <label  class="col-sm-2 control-label">期望职位</label>
+                <div class="col-sm-3">
                     <input type="text" name="exjob" class="form-control" value="${userImforGet.pexjob}" >
                 </div>
             </div>
             <div class="form-group">
-                <label  class="col-sm-2 control-label">期望的薪资范围</label>
-                <div class="col-sm-10">
+                <label  class="col-sm-2 control-label">期望薪资</label>
+                <div class="col-sm-3">
                     <%--${userImforGet.psal}--%>
                     <select class="form-control" type="text" name="exsal">
                         <option <c:if test="${userImforGet.psal=='2k'}"> selected</c:if>>2K</option>
@@ -193,7 +194,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <button type="button" class="btn btn-danger " id="xiugai">修改</button>
+                    <button type="submit" class="btn btn-danger " id="xiugai">修改</button>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;

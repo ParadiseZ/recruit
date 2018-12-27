@@ -67,7 +67,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                     <%--                        <li><a href=/pfimforcuser.jsp">个人信息</a></li>--%>
-                                <li><a class="imf" href="/updateperson.do?method=getBid" >个人信息</a></li>
+                                <li><a class="imf" href="/updateperson.do" >个人信息</a></li>
                                 <li><a href="/login.jsp">退出登录</a></li>
                             </ul>
                         </div>

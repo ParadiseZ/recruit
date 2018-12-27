@@ -102,19 +102,14 @@ public class UpdateServlet extends HttpServlet {
         String pemail = req.getParameter( "emial" );
         System.out.println(padvantage);
          person_domain personDomain = new person_domain(id,hone,passsword,username,sex,bb,ptime,pstate,school,major,exjob,psrecord,psal,padvantage,pemail);
-
-
         System.out.println(personDomain);
-
-
-
             iPersonService.updatePerson(personDomain);
             Map resultMap = registerLoginService.usernameLogin(username,passsword);
             if(resultMap.containsKey(2)){
                 List<person_domain> person_domainList = (List<person_domain>) resultMap.get(2);
                 req.getSession().setAttribute("userImformation",person_domainList);
             }
-           req.getRequestDispatcher( "/updatepersonal.jsp" ).forward( req,resp );
+        req.getRequestDispatcher( "/show.jsp" ).forward( req,resp );
 
     }
 }

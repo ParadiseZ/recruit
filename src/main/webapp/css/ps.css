@@ -1,0 +1,69 @@
+.cl1{
+    background: rgb(246,246,248);
+}
+.c{
+    width: 180px;
+    height:60px ;
+    position: absolute;
+    top: 54px;
+    left: 55px;
+}
+.cl2{
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-image: url("../images/logo.png");
+
+}
+.cl4{
+    background: white;
+    width: 475px;
+    height: 263px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+}
+.cl5{
+    text-align: center;
+    font-size:30px;
+    font-family:"黑体";
+
+}
+.cl6{
+    text-align: center;
+    font-size: 20px;
+    font-family:"黑体";
+}
+.cl7{
+    text-align: center;
+    font-size: 15px;
+    color: red;
+}
+.cl8{
+    text-align: center;
+    font-size: 20px;
+    font-family:"黑体";
+    position: absolute;
+    margin-left:140px;
+    margin-top: 0px;
+}
+.cl9{
+    text-align: center;
+}
+.dialog{    width: 500px;
+    height: 200px;
+    border: solid 1px #b5b0b0;
+    border-radius: 5px;
+    position: absolute;
+    left: 30%;
+    bottom: 30%;
+    background: #eee;
+    line-height: 40px;
+    text-align: center;
+    display: none;
+    font-size:16px;
+}
