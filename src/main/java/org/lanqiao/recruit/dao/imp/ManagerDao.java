@@ -136,4 +136,16 @@ public class ManagerDao implements IManagerDao {
             return companyUserList;
         }
     }
+
+    @Override
+    public void resetPwd(String userKind, int id) throws SQLException {
+       QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+       String sql = null;
+       if("pUser".equals(userKind)){
+           sql = "update person set password='admin' where pid=?";
+       }else {
+           sql = "update companyuser set password='admin' where id=?";
+       }
+        queryRunner.update(sql,id);
+    }
 }

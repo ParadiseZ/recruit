@@ -20,4 +20,6 @@ public interface IManagerDao {
     public void deleteAll(String userKin,int a[]) throws SQLException;
     //分页查询
     public List getPageImfor(String userKind,int startIndex,int pageSize) throws SQLException;
+    //重置用户密码
+    public void resetPwd(String userKind,int id) throws SQLException;
 }

@@ -82,4 +82,13 @@ public class ManagerService implements IManagerService {
         }
         return resultFind;
     }
+
+    @Override
+    public void resetPwd(String userKind, int id) {
+        try {
+            managerDao.resetPwd(userKind,id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

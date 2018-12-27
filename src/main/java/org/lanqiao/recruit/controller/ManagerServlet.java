@@ -132,6 +132,16 @@ public class ManagerServlet extends HttpServlet {
                 req.setAttribute("pm",pm);
                 req.getRequestDispatcher("/member-del.jsp").forward(req,resp);
             }
+            if("resetpUserPwd".equals(methodGet)){
+                String idGet = req.getParameter("ID");
+                int idReset = Integer.parseInt(idGet);
+                managerService.resetPwd("pUser",idReset);
+            }
+            if("resetcUserPwd".equals(methodGet)){
+                String idGet = req.getParameter("ID");
+                int idReset = Integer.parseInt(idGet);
+                managerService.resetPwd("cUser",idReset);
+            }
         }
     }
 
