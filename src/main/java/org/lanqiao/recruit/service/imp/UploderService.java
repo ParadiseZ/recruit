@@ -11,7 +11,7 @@ public class UploderService implements IUploaderService {
     @Override
     public void insertInto(int id,int pid, String fileName) {
         try {
-            uploaderDao.insertInto(id,fileName);
+            uploaderDao.insertInto(id,pid,fileName);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

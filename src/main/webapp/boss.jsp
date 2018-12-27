@@ -16,6 +16,8 @@
     <title>poss直聘</title>
     <link rel="icon" href="img/benz.png">
     <link rel="stylesheet" href="css/boss.css">
+    <link rel="stylesheet" href="css/px.css">
+    <link rel="stylesheet" href="css/photo.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/pfimforcuser.css">
@@ -133,42 +135,31 @@
         </div>--%>
     </div>
     <!-- 搜索框结束 -->
-    <%--轮播开始--%>
-    <div class="carousel" id="carousel-256155">
-        <ol class="carousel-indicators">
-            <li data-slide-to="0" data-target="#carousel-256155">&nbsp;</li>
-            <li data-slide-to="1" data-target="#carousel-256155">&nbsp;</li>
-            <li class="active" data-slide-to="2" data-target="#carousel-256155">&nbsp;</li>
-        </ol>
-
-        <div class="carousel-inner">
-            <div class="item"><img alt="" src="images/11.jpg"/>
-                <div class="carousel-caption" contenteditable="true">
-                    <h4>百度</h4>
-
-                    <p>百度（纳斯达克：BIDU），全球最大的中文搜索引擎、最大的中文网站。</p>
-                </div>
-            </div>
-
-            <div class="item"><img alt="" src="images/12.jpg"/>
-                <div class="carousel-caption" contenteditable="true">
-                    <h4>阿里巴巴</h4>
-
-                    <p>阿里巴巴集团经营多项业务，另外也从关联公司的业务和服务中取得经营商业生态系统上的支援。业务和关联公司的业务包括：淘宝网、天猫、聚划算、全球速卖通、阿里巴巴国际交易市场、1688、阿里妈妈、阿里云、蚂蚁金服、菜鸟网络等。</p>
-                </div>
-            </div>
-
-            <div class="item active"><img alt="" src="images/13.jpg"/>
-                <div class="carousel-caption" contenteditable="true">
-                    <h4>京东</h4>
-
-                    <p>京东JD.COM-专业的综合网上购物商城，销售超数万品牌、4020万种商品，囊括家电、手机、电脑、母婴、服装等13大品类。秉承客户为先的理念，京东所售商品为正品行货、全国联保、机打发票。</p>
-                </div>
-            </div>
+    <%--图片开始--%>
+    <div class="banner container">
+        <div class="banner-left">
+            <ul>
+                <li><a href="/search.do?method=searchImfor&searchInput=嵌入式软件高级工程师">嵌入式软件高级工程师</a></li>
+                <li><a href="/search.do?method=searchImfor&searchInput=运维实施经理">运维实施经理</a></li>
+                <li><a href="/search.do?method=searchImfor&searchInput=高级后台开发">高级后台开发</a></li>
+                <li><a href="/search.do?method=searchImfor&searchInput=web前端开发(高级)工程师">web前端开发(高级)工程师</a></li>
+                <li><a href="/search.do?method=searchImfor&searchInput=高级测试工程师">高级测试工程师</a></li>
+                <li><a href="/search.do?method=searchImfor&searchInput=java研发专家">java研发专家</a></li>
+                <li><a href="/search.do?method=searchImfor&searchInput=大数据开发工程师">大数据开发工程师</a></li>
+                <li><a href="">人力资源</a></li>
+                <li><a href="">UI设计师</a></li>
+                <li><a href="">IOS</a></li>
+            </ul>
         </div>
-        <a class="left carousel-control" data-slide="prev" href="#carousel-256155">&lsaquo;</a> <a class="right carousel-control" data-slide="next" href="#carousel-256155">&rsaquo;</a>
+        <div class="photo">
+            <div class="p1-1"></div>
+            <div class="p1-2"></div>
+            <div class="p1-3"></div>
+            <div class="p1-4"></div>
+            <div class="p1-5"></div>
+        </div>
     </div>
-    <%--轮播结束--%>
+    <%--图片结束--%>
     <!-- 职位开始 -->
     <div class="zhaopin">
         <div class="tabbable" id="tabs-602554"><!-- Only required for left/right tabs -->

@@ -26,9 +26,9 @@ public class RecruitDaoImpl implements IRecruitDao {
 
     @Override
     public void addRecruit(Recruit recruit) {
-        String sql = "INSERT INTO recruit (job,neednum,sal,location,companyname,jobduty,datetime,promulgator) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO recruit (id,job,neednum,sal,location,companyname,jobduty,datatime,promulgator) VALUES (?,?,?,?,?,?,?,?,?)";
         try {
-            qr.update(sql,recruit.getJob(),recruit.getNeednum(),recruit.getSal(),recruit.getLocation(),recruit.getCompanyname(),recruit.getJobduty(),recruit.getDatatime(),recruit.getPromulgator());
+            qr.update(sql,recruit.getId(),recruit.getJob(),recruit.getNeednum(),recruit.getSal(),recruit.getLocation(),recruit.getCompanyname(),recruit.getJobduty(),recruit.getDatatime(),recruit.getPromulgator());
         } catch (SQLException e) {
             e.printStackTrace();
         }

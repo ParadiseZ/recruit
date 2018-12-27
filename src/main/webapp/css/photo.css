@@ -1,0 +1,72 @@
+/* banner */
+.banner{
+    position: relative;
+}
+.banner-left{
+    background:white;
+    position: absolute;
+    margin-left: 120px;
+    left: 0;
+    top: 0;
+}
+.banner-left ul{
+    list-style: none;
+    margin: 18px 0;
+}
+.banner-left ul li{
+    width: 204px;
+    height: 42px;
+    line-height:42px;
+    padding-left: 30px;
+}
+.banner-left ul li a{
+    color:rgb(92,104,124);
+    text-decoration: none;
+}
+.banner-left ul li:hover{
+    background-color: rgb(92,201,180);
+    color:white;
+}
+.photo{
+    width: 710px;
+    height: 455px;
+    background-color:white;
+    /* float: left; */
+    margin-left: 315px;
+}
+.p1-1{
+    width: 472px;
+    height: 226px;
+    position: absolute;
+    background-image: url(../images/a.jpg);
+}
+.p1-2{
+    width: 234px;
+    height: 226px;
+    /* position: absolute; */
+    background-image: url(../images/c.jpg);
+    float: right;
+}
+.p1-3{
+    width: 472px;
+    height: 226px;
+    background-image: url(../images/b.jpg);
+    position: absolute;
+    bottom: 0;
+}
+.p1-4{
+    width: 235px;
+    height: 112px;
+    background-image: url(../images/d.jpg);
+    position: absolute;
+    bottom: 114px;
+    right: 130px;
+}
+.p1-5{
+    width: 235px;
+    height: 112px;
+    background-image: url(../images/e.jpg);
+    position: absolute;
+    bottom: 0;
+    right: 130px;
+}

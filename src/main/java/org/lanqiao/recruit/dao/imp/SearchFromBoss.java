@@ -12,9 +12,10 @@ import java.util.List;
 public class SearchFromBoss implements ISearchFromBoss {
     @Override
     public List<Recruit> searcResult(String searchKind) throws SQLException {
+        String userName = "%"+searchKind+"%";
         QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
-        String sql = "select * from recruit where job=? or companyname=?";
-        List<Recruit> recruitList = queryRunner.query(sql,new BeanListHandler<>(Recruit.class),searchKind,searchKind);
+        String sql = "select * from recruit where job like ? or companyname like ?";
+        List<Recruit> recruitList = queryRunner.query(sql,new BeanListHandler<>(Recruit.class),userName,userName);
         return recruitList;
     }
 }

@@ -147,6 +147,8 @@ select {
     position: absolute;
     margin-top: 64px;
 }
+
+
 a,b{
     font-size: 14px;
     text-decoration: none;
@@ -262,86 +264,10 @@ a,b{
 .com1-3{
     margin-top: 95px;
 }
-.bottom{
+.bottom {
     width: 100%;
     height: 136px;
+}
+
     /* background-color: chartreuse; */
-    margin: 0 auto;
-    margin-top: 30px;
-}
-.bottom1{
-    width: 1000px;
-    height: 136px;
-    /* background-color: red; */
-    position: relative;
-    margin: 0 auto;
-}
-.bottom1-1{
-    width: 650px;
-    height: 136px;
-    /* background-color: green; */
-    float: left;
-}
-td{
-    width: 235px;
-    height: 15px;
-    align:left;
-}
-.word1:hover{
-    color: rgb(0,158, 182);
-}
-.word{
-    font-size: 14px;
-    cursor: pointer;
-}
-.word1{
-    font-size: 12px;
-    cursor: pointer;
-}
-.bottom1-2{
-    width: 350px;
-    height: 136px;
-    /* background-color: darkgoldenrod; */
-    float: right;
-}
-.bottom1-2-1,.bottom1-2-2,.bottom1-2-3{
-    width: 270px;
-    height: 26px;
-    /* background-color: aqua; */
-    float: right;
-    font-size: 14px;
-    text-align: right;
-}
-.bottom1-2-1{
-    margin-top: 15px;
-}
-.bottom1-2-2{
-    margin-top: 15px;
-}
-.bottom1-2-3{
-    margin-top: 15px;
-}
-.di{
-    width: 100%;
-    height: 51px;
-    background-color:rgb(34,34,34);
-    position: relative;
-}
-.di1{
-    width: 940px;
-    height: 21px;
-    position: absolute;
-    left: 205px;
-    top: 15px;
-}
-.di1-1{
-    font-size: 10px;
-    margin-right: 34.4px;
-    color:rgb(153,153,153);
-    float: left;
-    margin-left: 40px;
-    cursor: pointer;
-}
-.di1-1:hover{
-    color: rgb(0,158, 182);
-}
+  

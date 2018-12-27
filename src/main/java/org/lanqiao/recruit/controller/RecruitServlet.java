@@ -1,5 +1,6 @@
 package org.lanqiao.recruit.controller;
 
+import org.lanqiao.recruit.domain.CompanyUser;
 import org.lanqiao.recruit.domain.Recruit;
 import org.lanqiao.recruit.service.imp.RecruitServiceImpl;
 import org.lanqiao.recruit.service.inter.IRecruitService;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet("/recruit.do")
@@ -38,11 +40,22 @@ public class RecruitServlet extends HttpServlet {
         Recruit recruit = new Recruit();
 
         HttpSession httpSession = req.getSession();
+        int id =0;
+        List<CompanyUser> userImformation = (List<CompanyUser>)httpSession.getAttribute("userImformation");
+        for(CompanyUser companyUser:userImformation){
+            id = companyUser.getId();
+        }
+
+
+        System.out.println(id);
+
+
 
 //         Int类型强转换  String类型直接写
 //          recruit.setNeednum(Integer.valueOf(req.getParameter("sal")));
 //        recruit.setSal(req.getParameter("sal"));
 //        recruit.setId(Integer.valueOf(req.getParameter("id")));
+        recruit.setId(id);
         recruit.setSal(req.getParameter("sal"));
         recruit.setNeednum(Integer.valueOf(req.getParameter("neednum")));
         recruit.setJob(req.getParameter("job"));
@@ -50,7 +63,7 @@ public class RecruitServlet extends HttpServlet {
         recruit.setJobduty(req.getParameter("jobduty"));
         recruit.setLocation(req.getParameter("location"));
         recruit.setPromulgator(req.getParameter("promulgator"));
-
+        recruit.setDatatime("2年");
 
         System.out.println(recruit);
         recruitService.addRecruit(recruit);

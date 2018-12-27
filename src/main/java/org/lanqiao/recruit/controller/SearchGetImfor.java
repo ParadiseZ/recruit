@@ -27,7 +27,7 @@ public class SearchGetImfor extends HttpServlet {
             String userKindS = req.getParameter("searchInput");
             List<Recruit> recruitList = searchFromBossService.searchImfor(userKindS);
             req.getSession().setAttribute("searchImformation",recruitList);
-            req.getRequestDispatcher("/zhiwei.jsp").forward(req,resp);
+            req.getRequestDispatcher("/aaa.jsp").forward(req,resp);
         }
     }
 }
