@@ -34,8 +34,8 @@
         <li class="layui-nav-item">
             <a href="javascript:;">admin</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-                <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
-                <dd><a href="./login.html">退出</a></dd>
+                <dd><a onclick="x_admin_show('切换帐号','/managerLogin.jsp')">切换帐号</a></dd>
+                <dd><a href="./managerLogin.jsp">退出</a></dd>
             </dl>
         </li>
     </ul>
@@ -54,14 +54,14 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/manager.do?methodM=findPuserImfor">
+                        <a _href="/manager.do?methodM=findPageImforpUser&currentPage=1">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>个人用户</cite>
 
                         </a>
                     </li >
                     <li>
-                        <a _href="/manager.do?methodM=findCuserImfor">
+                        <a _href="/manager.do?methodM=findPageImforcUser&currentPage=1">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>企业用户</cite>
                         </a>

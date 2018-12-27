@@ -57,18 +57,19 @@
                     <input type="username" class="form-control" id="username" name="username" placeholder="用户名">
                 </div>
             </div>
-            <div class="form-group" id="mpanel4">
+
+            <div class="form-group">
+                <%--<label for="inputPassword3" class="col-sm-2 control-label"></label>--%>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="密码">
+                </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-10">
                     <input type="button" class="control controlCursor form-control" value="点击进行验证（图片右上角刷新）" style="">
                 </div>
             </div>
-            <div class="form-group">
-                <%--<label for="inputPassword3" class="col-sm-2 control-label"></label>--%>
-                <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="密码">
-                </div>
+            <div class="form-group" id="mpanel4">
             </div>
             <div class="form-group">
                 <%--<label for="inputPassword3" class="col-sm-2 control-label"></label>--%>
@@ -87,4 +88,23 @@
 </div>
 </div>
 </body>
+<script>
+    function checkForm(form) {
+        if($(".cheking").attr("value")==0){
+            alert("请进行滑块验证！")
+            return false;
+        }
+        if(form.username.value==""){
+            alert("用户名不能为空！");
+            form.username.focus();
+            return false;
+        }
+        if(form.password.value==""){
+            alert("密码不能为空！");
+            form.password.focus()
+            return false;
+        }
+        return true;
+    }
+</script>
 </html>

@@ -1,3 +1,4 @@
+<%@ page import="org.lanqiao.recruit.utils.PageModel" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -90,14 +91,31 @@
         </tbody>
     </table>
     <div class="page">
-        <div>
-            <a class="prev" href="">&lt;&lt;</a>
-            <a class="num" href="">1</a>
-            <span class="current">2</span>
-            <a class="num" href="">3</a>
-            <a class="num" href="">489</a>
-            <a class="next" href="">&gt;&gt;</a>
-        </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <% PageModel pm = (PageModel)request.getAttribute("pm");%>
+                <li><a href="/manager.do?methodM=findPageImforpUser&currentPage=<%=pm.getStartPage()%>">首页</a></li>
+                <li>
+                    <a href="/manager.do?methodM=findPageImforpUser&currentPage=<%=pm.getPrePageNum()%>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <%
+                    int pageNum = pm.getTotalPageNum();
+                    for(int num=1;num<=pageNum;num++){
+                        %>
+                <li><a href="/manager.do?methodM=findPageImforpUser&currentPage=<%=num%>"><%=num%></a></li>
+                <%
+                    }
+                %>
+                    <a href="/manager.do?methodM=findPageImforpUser&currentPage=<%=pm.getNextPageNum()%>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+
+                <li><a href="/manager.do?methodM=findPageImforpUser&currentPage=<%=pm.getEndPage()%>">尾页</a></li>
+            </ul>
+        </nav>
     </div>
 
 </div>
@@ -123,7 +141,7 @@
             //发异步删除数据
             var ddd = $(obj).parents("tr").children('td:eq(1)').text();
             $.ajax({
-                url:"manager.do?methodM=deletePuserImdor&ID="+ddd,
+                url:"/manager.do?methodM=deletePuserImdor&ID="+ddd,
                 success:function (date) {
                     var num = eval(date);
                     $(obj).parents("tr").remove();
@@ -141,13 +159,22 @@
         var data = tableCheck.getData();
         layer.confirm('确认要删除吗？'+data,function(index){
             //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {icon: 1});
             var rrr = $(".layui-form-checked").not('.header');
             var selectNum=[];
             $.each(rrr,function () {
-                selectNum.push($(rrr).parents("tr").children("td:eq(1)").text());
+                selectNum.push($(this).parents("tr").children("td:eq(1)").text());
+            });
+            $.ajax({
+                type:"post",
+                url:"/manager.do?methodM=deleteAllpUser",
+                traditional:true,
+                data:{"attr":JSON.stringify(selectNum)},
+                dataType:"json",
+                success:function (date) {
+                    $(".layui-form-checked").not('.header').parents('tr').remove();
+                    layer.msg('删除成功', {icon: 1});
+                }
             })
-            $(".layui-form-checked").not('.header').parents('tr').remove();
         });
     }
 

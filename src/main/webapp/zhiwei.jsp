@@ -9,11 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <c:forEach begin="0" end="0" items="${sessionScope.userImformation}" var="userImfor" step="1">
+    <c:forEach begin="0" end="0" items="${userImformation}" var="userImfor" step="1">
         <c:set var="userImforGet" value="${userImfor}" scope="request"></c:set>
         <%--<c:set var="userName" value="${userImfor.userName}" scope="session"></c:set>--%>
-
     </c:forEach>
+    <c:set var="userKindRe" value="${sessionScope.userKindChoose}" scope="request"></c:set>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +36,7 @@
         <div class="box">公司</div>
         <div class="top1">
             <c:choose>
-                <c:when test="${not empty userImforGet}">
+                <c:when test="${userKindRe eq 'cUser'}">
                     <div class="dropdown">
                         <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 ${userImforGet.userName}
@@ -49,23 +49,37 @@
                         </ul>
                     </div>
                 </c:when>
+                <%--                    <input value="${userImforGet}">--%>
+                <c:when test="${userKindRe eq 'pUser'}">
+                    <div class="dropdown">
+                        <a id="" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                ${userImforGet.pname}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                                <%--                        <li><a href=/pfimforcuser.jsp">个人信息</a></li>--%>
+                            <li><a class="imf" href="/updateperson.do?method=getBid" >个人信息</a></li>
+                            <li><a href="/login.jsp">退出登录</a></li>
+                        </ul>
+                    </div>
+
+                </c:when>
                 <c:otherwise>
                     <div class="box2">上传简历</div>
                     <div class="box2">我要招聘</div>
                     <div class="box3">
-                        <button class="button">注册</button>
+                        <button class="button" onclick="window.open('/register.jsp')">注册</button>
                     </div>
                     <div class="box3">
-                        <button class="button">登录</button>
+                        <button class="button" onclick="window.open('/login.jsp')">登录</button>
                     </div>
                 </c:otherwise>
             </c:choose>
-
         </div>
     </div>
 
     <div>
-        <table>
+        <table class="table table-hover">
             <thead>
                 <th>职位名称</th>
                 <th>需求人数</th>

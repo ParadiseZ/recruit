@@ -57,18 +57,20 @@
                     <input type="text" class="form-control" id="username" name="username" placeholder="用户名/邮箱/手机号">
                 </div>
             </div>
-            <div class="form-group" id="mpanel4">
+
+
+            <div class="form-group">
+                <%--<label for="inputPassword3" class="col-sm-2 control-label"></label>--%>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="密码">
+                </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-10">
                     <input type="button" class="control controlCursor form-control" value="点击进行验证（图片右上角刷新）" style="">
                 </div>
             </div>
-            <div class="form-group">
-                <%--<label for="inputPassword3" class="col-sm-2 control-label"></label>--%>
-                <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="密码">
-                </div>
+            <div class="form-group" id="mpanel4">
             </div>
             <div class="form-group">
                 <%--<label for="inputPassword3" class="col-sm-2 control-label"></label>--%>

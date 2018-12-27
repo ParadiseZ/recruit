@@ -7,13 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fun" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fun" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-    <c:forEach begin="0" end="0" items="${sessionScope.userImformation}" var="userImfor" step="1">
-    <c:set var="userImforGet" value="${userImfor}" scope="request"></c:set>
-    <%--<c:set var="userName" value="${userImfor.userName}" scope="session"></c:set>--%>
-</c:forEach>
+    <c:forEach begin="0" end="0" items="${userImformation}" var="userImfor" step="1">
+        <c:set var="userImforGet" value="${userImfor}" scope="request"></c:set>
+        <%--<c:set var="userName" value="${userImfor.userName}" scope="session"></c:set>--%>
+    </c:forEach>
     <c:choose>
     <c:when test="${userImforGet.phone==0}">
         <title>完善信息</title>
@@ -40,7 +40,7 @@
         </c:when>
     </c:choose>
 </head>
-<body>
+<body class="bodyAll">
     <div class="all">
     <!-- 头部开始 -->
     <div class="header">
@@ -150,7 +150,7 @@
                             <button type="button" class="btn btn-info modify">点击修改</button>
                             <button type="submit" class="btn btn-info saveImfor" style="display: none">保存信息</button>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button type="button" class="btn btn-info">修改公司信息</button>
+                            <button type="button" class="btn btn-info" onclick="window.open('/gongsijainjie.jsp')">修改公司信息</button>
                         </c:otherwise>
                         </c:choose>
                     </div>
@@ -162,5 +162,42 @@
 
         </div>
     </div>
+
+<script>
+    $(function () {
+        $(".box1").click(function () {
+            window.open("/boss.jsp")
+        })
+    })
+    function checkSubmitEmailPhone(form) {
+        if ($("#email").val() == "") {
+//$("#confirmMsg").html("<font color='red'>邮箱地址不能为空！</font>");
+            alert("邮箱地址不能为空!");
+            $("#email").focus();
+            return false;
+        }
+        if (!$("#email").val().match(/^\w+@\w+\.\w+(\.\w+)*$/)) {
+            alert("邮箱格式不正确！")
+//$("#confirmMsg").html("<font color='red'>邮箱格式不正确！请重新输入！</font>");
+            $("#email").focus();
+            return false;
+        }
+        if ($("#phone").val() == "") {
+            alert("手机号码不能为空！");
+            //$("#moileMsg").html("<font color='red'>手机号码不能为空！</font>");
+            $("#phone").focus();
+            return false;
+        }
+
+        if (!$("#phone").val().match(/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/)) {
+            alert("手机号码格式不正确！");
+            // $(".warning").val("手机号码格式不正确！")
+            //$("#moileMsg").html("<font color='red'>手机号码格式不正确！请重新输入！</font>");
+            $("#phone").focus();
+            return false;
+        }
+        return true;
+    }
+</script>
 </body>
 </html>

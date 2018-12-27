@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>boss直聘</title>
+    <title>poss直聘</title>
     <link rel="icon" href="img/benz.png">
     <link rel="stylesheet" href="css/boss.css">
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -53,7 +53,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="/registerLogin.do?method=loginImfor">个人信息</a></li>
-                                <li class=""><a href="#">招聘信息</a></li>
+                                <li class=""><a href="/fabu.jsp">招聘信息</a></li>
                                 <li class=""><a href="/registerLogin.do?method=logout">退出登录</a></li>
                             </ul>
                         </div>
@@ -77,10 +77,10 @@
                         <div class="box2">上传简历</div>
                         <div class="box2">我要招聘</div>
                         <div class="box3">
-                            <button class="button">注册</button>
+                            <button class="button" onclick="window.open('/register.jsp')">注册</button>
                         </div>
                         <div class="box3">
-                            <button class="button">登录</button>
+                            <button class="button" onclick="window.open('/login.jsp')">登录</button>
                         </div>
                     </c:otherwise>
                 </c:choose>
@@ -92,22 +92,23 @@
     <!-- 搜索框开始 -->
     <div class="sou">
         <div class="sou1">
-            <div class="city">
+           <%-- <div class="city">
                 <select  style="width: 96px;height: 44px;">
                     <option value="xiala">北京</option>
                     <option value="xiala">上海</option>
                     <option value="xiala">广州</option>
                     <option value="xiala">深圳</option>
                 </select>
-            </div>
+            </div>--%>
             <form method="post" action="/search.do?method=searchImfor">
                 <div class="sou2">
                     <!-- <input type="text" name="name" style="width:330px; height:30px; padding-left: 2px;padding-top: 7px" /> -->
-                    <input type="text" name="searchInput" style="margin-left: 0px;margin-top: 0px;padding-right: 245px;padding-top: 12px;padding-bottom: 12px" placeholder="搜索职位、公司">
+                    <input type="text" name="searchInput" style="margin-left: 0px;margin-top: 0px;padding-right: 438px;padding-top: 12px;padding-bottom: 12px" placeholder="搜索职位、公司">
                 </div>
-                <div class="logo1"><button type="submit" class="btn-info" value="搜索">搜索</button></div>
+                <div class="logo1" onclick="document.getElementById('search-btn').click();"></div>
+                <button type="submit" class="btn-info" style="display: none" id="search-btn">搜索</button>
             </form>
-            <div class="work">
+<%--            <div class="work">
                 <select  style="width: 100px;height: 44px;">
                     <option value="xiala"></option>
                     <option value="xiala">公司行业</option>
@@ -115,10 +116,10 @@
                     <option value="xiala">电子商务</option>
                     <option value="xiala">互联网</option>
                 </select>
-            </div>
+            </div>--%>
 
         </div>
-        <div class="zhiwei">
+<%--        <div class="zhiwei">
             <b style="color:rgb(159, 163,172);">热门职位:</b>
             <a href="" style=" margin-left:14px; color:rgb(159, 163,172);" >Java</a>
             <a href="" style=" margin-left:14px; color:rgb(159, 163,172);">PHP</a>
@@ -129,7 +130,7 @@
             <a href="" style=" margin-left:14px; color:rgb(159, 163,172);">产品经理</a>
             <a href="" style=" margin-left:14px; color:rgb(159, 163,172);">UI设计师</a>
             <a href="" style=" margin-left:14px; color:rgb(159, 163,172);">产品运营</a>
-        </div>
+        </div>--%>
     </div>
     <!-- 搜索框结束 -->
     <%--轮播开始--%>
@@ -969,7 +970,7 @@
     </div>
     <!-- 职位结束 -->
     <!-- 公司 -->
-    <div class="com">
+<%--    <div class="com">
 
         <div class="com1">
             <p class="com1-1">美团</p>
@@ -1019,7 +1020,7 @@
             <p class="com1-3">15个在招职位</p>
         </div>
 
-    </div>
+    </div>--%>
     <!-- 公司结束 -->
     <!-- bottom开始 -->
     <div class="bottom">
@@ -1073,5 +1074,11 @@
     <!-- 底部栏结束 -->
 </div>
 </body>
-</html>
+<script>
+    $(function () {
+/*        $(".logo1").click(function () {
+            $(this).submit();
+        })*/
+    })
+</script>
 </html>

@@ -103,4 +103,37 @@ public class ManagerDao implements IManagerDao {
                 return num;
             }
     }
+
+    @Override
+    public void deleteAll(String userKin, int[] a) throws SQLException {
+        String sql = null;
+        QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+        if("pUser".equals(userKin)){
+            for(int k:a){
+                sql = "delete from person where pid=?";
+                queryRunner.update(sql,k);
+            }
+        }
+        if("cUser".equals(userKin)){
+            for(int k:a){
+                sql = "delete from companyuser where id=?";
+                queryRunner.update(sql,k);
+            }
+        }
+    }
+
+    @Override
+    public List getPageImfor(String userKind, int startIndex, int pageSize) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+        String sql = null;
+        if("pUser".equals(userKind)){
+            sql = "select * from person limit ?,?";
+            List<person_domain> person_domainList = queryRunner.query(sql,new BeanListHandler<>(person_domain.class),startIndex,pageSize);
+            return person_domainList;
+        }else{
+            sql = "select * from companyuser limit ?,?";
+            List<CompanyUser> companyUserList = queryRunner.query(sql,new BeanListHandler<>(CompanyUser.class),startIndex,pageSize);
+            return companyUserList;
+        }
+    }
 }
