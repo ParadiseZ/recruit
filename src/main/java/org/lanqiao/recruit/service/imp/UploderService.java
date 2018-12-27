@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class UploderService implements IUploaderService {
     IUploaderDao uploaderDao = new UploaderDao();
     @Override
-    public void insertInto(int id, String fileName) {
+    public void insertInto(int id,int pid, String fileName) {
         try {
             uploaderDao.insertInto(id,fileName);
         } catch (SQLException e) {
