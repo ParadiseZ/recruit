@@ -34,7 +34,7 @@
         <li class="layui-nav-item">
             <a href="javascript:;">admin</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-                <dd><a onclick="x_admin_show('切换帐号','/managerLogin.jsp')">切换帐号</a></dd>
+                <dd><a href="/managerLogin.jsp">切换帐号</a></dd>
                 <dd><a href="./managerLogin.jsp">退出</a></dd>
             </dl>
         </li>

@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.lanqiao.domain.Recruit" %>
+<%@ page import="org.lanqiao.recruit.domain.Recruit" %>
 
 <%--
   Created by IntelliJ IDEA.

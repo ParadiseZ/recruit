@@ -51,7 +51,7 @@
     </div>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <span class="x-right" style="line-height:40px">共有数据：${sessionScope.countOfUserNum.cUserNum}条</span>
+        <%--<span class="x-right" style="line-height:40px">共有数据：${sessionScope.countOfUserNum.cUserNum}条</span>--%>
     </xblock>
     <table class="layui-table">
         <thead>
@@ -84,7 +84,11 @@
                     <td class="td-manage">
                         <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
                         <i class="layui-icon">&#xe640;</i>
-                    </a></td>
+                        </a>
+                        <a onclick="resetPassword(this,'要重置密码的id')" href="javascript:;">
+                            <i class="layui-icon">&#xe631;</i>
+                        </a>
+                    </td>
                 </tr>
             </c:forEach>
         </tbody>
@@ -133,6 +137,22 @@
         });
     });
 
+
+    //重置密码
+    function resetPassword(obj,id){
+        layer.confirm('确认要重置密码吗？（重置为admin）',function(index){
+            //发异步删除数据
+            var reset = $(obj).parents("tr").children('td:eq(1)').text();
+            $.ajax({
+                url:"/manager.do?methodM=resetcUserPwd&ID="+reset,
+                success:function (date) {
+                    layer.msg('已重置!',{icon:1,time:1000});
+                }
+            })
+            /*            layer.msg(ddd);
+                        $(obj).parents("tr").remove();*/
+        });
+    }
 
     /*用户-删除*/
     function member_del(obj,id){

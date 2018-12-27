@@ -25,4 +25,7 @@ public interface IManagerService {
 
     //分页查询
     public List getPageImfor(String userKind,int startIndex,int pageSize);
+
+    //重置密码为admin
+    public void resetPwd(String userKind,int id);
 }
