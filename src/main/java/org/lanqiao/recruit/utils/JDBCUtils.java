@@ -3,10 +3,7 @@ package org.lanqiao.recruit.utils;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class JDBCUtils {
     static DataSource ds ;
@@ -18,6 +15,12 @@ public class JDBCUtils {
     }
     public static Connection getConnection() throws SQLException {
         Connection con = ds.getConnection();
+        return con;
+    }
+    public static Connection getUpConnection() throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/recruit?useUnicode=true&characterEncoding=utf8&useSSL=false";
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url,"root","root");
         return con;
     }
     public static void releaseSource(Connection con, Statement statement, ResultSet res){
