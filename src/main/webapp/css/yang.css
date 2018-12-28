@@ -67,9 +67,10 @@
 } */
 
 .all{
-    width: 100%;
+    /*width: 100%;*/
+    zoom: 1;
     position: relative;
-    height: 930px;
+    /*height: 930px;*/
     background-color: rgb(93, 213,200);
     background-size: cover;
 

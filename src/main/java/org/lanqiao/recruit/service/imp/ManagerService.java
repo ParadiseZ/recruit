@@ -42,10 +42,10 @@ public class ManagerService implements IManagerService {
     }
 
     @Override
-    public List findImforUser(String userKind, String username) {
+    public List findImforUser(int startIndex,int pageSize,String userKind, String username) {
         List resultFind = null;
         try {
-            resultFind = managerDao.findImforUser(userKind,username);
+            resultFind = managerDao.findImforUser(startIndex,pageSize,userKind,username);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -53,10 +53,10 @@ public class ManagerService implements IManagerService {
     }
 
     @Override
-    public int countNumOfUser(String userKind) {
+    public int countNumOfUser(String userKind,String username) {
         int num = 0;
         try {
-            num = managerDao.getCount(userKind);
+            num = managerDao.getCount(userKind,username);
         } catch (SQLException e) {
             e.printStackTrace();
         }

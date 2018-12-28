@@ -17,8 +17,8 @@
 <body class="ccc">
 <div class="header">
     <div class="top">
-        <div ><a  class="logo" href="" style=" text-decoration: none;">POSS直聘</a></div>
-        <div class="box1">首页</div>
+        <div ><a  class="logo" href="" style=" text-decoration: none;" onclick="window.open('/boss.jsp')">POSS直聘</a></div>
+        <div class="box1" onclick="window.open('/boss.jsp')">首页</div>
         <div class="box">职位</div>
         <div class="box">公司</div>
         <div class="top1">

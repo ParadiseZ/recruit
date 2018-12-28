@@ -65,40 +65,52 @@ public class ManagerDao implements IManagerDao {
     }
 
     @Override
-    public List findImforUser(String userKind,String username) throws SQLException {
+    public List findImforUser(int startIndex,int pageSize,String userKind,String username) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
         String sql = null;
         String userName = "%"+username+"%";
         if("pUser".equals(userKind)){
-            sql = "select * from person where pname like ?";
-            List<person_domain> person_domainList = queryRunner.query(sql,new BeanListHandler<>(person_domain.class),userName);
+            sql = "select * from person where pname like ? limit ?,?";
+            List<person_domain> person_domainList = queryRunner.query(sql,new BeanListHandler<>(person_domain.class),userName,startIndex,pageSize);
             return person_domainList;
         }else{
-            sql = "select * from companyuser where username like ?";
-            List<CompanyUser> companyUserList = queryRunner.query(sql,new BeanListHandler<>(CompanyUser.class),userName);
+            sql = "select * from companyuser where username like ? limit ?,?";
+            List<CompanyUser> companyUserList = queryRunner.query(sql,new BeanListHandler<>(CompanyUser.class),userName,startIndex,pageSize);
             return companyUserList;
         }
     }
 
     @Override
-    public int getCount(String userKind) throws SQLException {
+    public int getCount(String userKind,String username) throws SQLException {
             QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
             String sql = null;
             long numOfGet = 0;
             int num = 0;
-            if("pUser".equals(userKind)){
+            if("pUser".equals(userKind)&&username==null){
                 sql = "select count(*) from person";
                 numOfGet = (long)qr.query(sql,new ScalarHandler<>(1));
                 num = (int)numOfGet;
                 return num;
-            }else if("cUser".equals(userKind)){
+            }else if("cUser".equals(userKind)&&username==null){
                 sql = "select count(*) from companyuser";
                 numOfGet = (long)qr.query(sql,new ScalarHandler<>(1));
                 num = (int)numOfGet;
                 return num;
-            }else {
+            }else if("mUser".equals(userKind)&&username==null){
                 sql = "select count(*) from manager";
                 numOfGet = (long)qr.query(sql,new ScalarHandler<>(1));
+                num = (int)numOfGet;
+                return num;
+            }else if("pUser".equals(userKind)&&username!=null){
+                String userName = "%"+username+"%";
+                sql = "select count(*) from person where pname like ?";
+                numOfGet = (long)qr.query(sql,new ScalarHandler<>(1),userName);
+                num = (int)numOfGet;
+                return num;
+            }else {
+                String userName = "%"+username+"%";
+                sql = "select count(*) from companyuser where username like ?";
+                numOfGet = (long)qr.query(sql,new ScalarHandler<>(1),userName);
                 num = (int)numOfGet;
                 return num;
             }

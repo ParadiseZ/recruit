@@ -59,7 +59,6 @@ public class jianliUpLoad extends HttpServlet {
                     String fileName = item.getName();//要上传的文件的名称
                     String contentType = item.getContentType();//文件的类型
 
-                    System.out.println(fieldName+"===fieldName=="+fileName);
                     boolean isInMemory = item.isInMemory();
                     long sizeInBytes = item.getSize();
 //                    String uploadPath = this.getServletContext().getRealPath("resources/");//设置上传的绝对路径 将上传的文件按日期分类存放
@@ -74,7 +73,7 @@ public class jianliUpLoad extends HttpServlet {
                     File uploadedFile = new File(dis,fileName);
 //                    File uploadedFile = new File("E://upload",fileName);
                   item.write(uploadedFile);
-                  uploaderService.insertInto( 11,1,fileName );
+                  uploaderService.insertInto( 1,1,fileName );
                 }
             }
         } catch (FileUploadException e) {

@@ -57,7 +57,7 @@ public class ManagerServlet extends HttpServlet {
                 String idGet = req.getParameter("ID");
                 int id = Integer.parseInt(idGet);
                 managerService.deleteImfor("pUser",id);
-                int pUserNum = managerService.countNumOfUser("pUser");
+                int pUserNum = managerService.countNumOfUser("pUser",null);
                 PrintWriter out = resp.getWriter();
                 String pUserNumStr = JSON.toJSONString(pUserNum);
                 out.print(pUserNumStr);
@@ -66,24 +66,39 @@ public class ManagerServlet extends HttpServlet {
                 String idGet = req.getParameter("ID");
                 int id = Integer.parseInt(idGet);
                 managerService.deleteImfor("cUser",id);
-                int cUserNum = managerService.countNumOfUser("cUser");
+                int cUserNum = managerService.countNumOfUser("cUser",null);
                 PrintWriter out = resp.getWriter();
                 String cUserNumStr = JSON.toJSONString(cUserNum);
                 out.print(cUserNumStr);
             }
             if("searchPuserImfor".equals(methodGet)){
                 String username = req.getParameter("input-username");
-                List<person_domain> person_domainList = ( List<person_domain>)managerService.findImforUser("pUser",username);
+                String currentPage = req.getParameter("currentPage");
+                int pageNum = Integer.parseInt(currentPage);
+                int pUserNum = managerService.countNumOfUser("pUser",username);
+                if(pUserNum==0){
+                    pUserNum=1;
+                }
+                PageModel pm = new PageModel(pageNum,pUserNum,7);
+                List<person_domain> person_domainList = ( List<person_domain>)managerService.findImforUser(pm.getStartIndex(),pm.getPageSize(),"pUser",username);
+                pm.setRecords(person_domainList);
                 req.setAttribute("userImfor",person_domainList);
-                CountOfUserNum cs = getAndSetNum_user(req, resp);
-                cs.setpUserNum(2);
+                req.setAttribute("pm",pm);
                 req.getRequestDispatcher("/member-list.jsp").forward(req,resp);
             }
             if("searchCuserImfor".equals(methodGet)){
                 String username = req.getParameter("input-username");
-                List<CompanyUser> companyUserList = ( List<CompanyUser>)managerService.findImforUser("cUser",username);
+                String currentPage = req.getParameter("currentPage");
+                int pageNum = Integer.parseInt(currentPage);
+                int cUserNum = managerService.countNumOfUser("cUser",username);
+                if(cUserNum==0){
+                    cUserNum=1;
+                }
+                PageModel pm = new PageModel(pageNum,cUserNum,7);
+                List<CompanyUser> companyUserList = ( List<CompanyUser>)managerService.findImforUser(pm.getStartIndex(),pm.getPageSize(),"cUser",username);
+                pm.setRecords(companyUserList);
                 req.setAttribute("userImforC",companyUserList);
-                getAndSetNum_user(req, resp);
+                req.setAttribute("pm",pm);
                 req.getRequestDispatcher("/member-del.jsp").forward(req,resp);
             }
             if("deleteAllpUser".equals(methodGet)){
@@ -113,7 +128,7 @@ public class ManagerServlet extends HttpServlet {
             if("findPageImforpUser".equals(methodGet)){
                 String currentPage = req.getParameter("currentPage");
                 int pageNum = Integer.parseInt(currentPage);
-                int pUserNum = managerService.countNumOfUser("pUser");
+                int pUserNum = managerService.countNumOfUser("pUser",null);
                 PageModel pm = new PageModel(pageNum,pUserNum,7);
                 List<person_domain> person_domainList = (List<person_domain>)managerService.getPageImfor("pUser",pm.getStartIndex(),pm.getPageSize());
                 pm.setRecords(person_domainList);
@@ -124,9 +139,10 @@ public class ManagerServlet extends HttpServlet {
             if("findPageImforcUser".equals(methodGet)){
                 String currentPage = req.getParameter("currentPage");
                 int pageNum = Integer.parseInt(currentPage);
-                int pUserNum = managerService.countNumOfUser("cUser");
+                int pUserNum = managerService.countNumOfUser("cUser",null);
                 PageModel pm = new PageModel(pageNum,pUserNum,7);
                 List<CompanyUser> companyUserList = (List<CompanyUser>)managerService.getPageImfor("cUser",pm.getStartIndex(),pm.getPageSize());
+
                 pm.setRecords(companyUserList);
                 req.setAttribute("userImforC",companyUserList);
                 req.setAttribute("pm",pm);
@@ -171,9 +187,9 @@ public class ManagerServlet extends HttpServlet {
     //获取用户数量
     public CountOfUserNum getAndSetNum_user(HttpServletRequest req, HttpServletResponse resp){
         HttpSession httpSession = req.getSession();
-        int pUserNum = managerService.countNumOfUser("pUser");
-        int cUserNum = managerService.countNumOfUser("cUser");
-        int mUserNum = managerService.countNumOfUser("mUser");
+        int pUserNum = managerService.countNumOfUser("pUser",null);
+        int cUserNum = managerService.countNumOfUser("cUser",null);
+        int mUserNum = managerService.countNumOfUser("mUser",null);
         CountOfUserNum countOfUserNum = new CountOfUserNum(pUserNum,cUserNum,mUserNum);
         httpSession.setAttribute("countOfUserNum",countOfUserNum);
         return countOfUserNum;

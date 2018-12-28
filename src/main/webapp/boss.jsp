@@ -41,10 +41,10 @@
     <!-- 头部开始 -->
     <div class="header">
         <div class="top">
-            <div class="logo">POSS直聘</div>
-            <div class="box1">首页</div>
+            <div class="logo" onclick="window.open('/boss.jsp')">POSS直聘</div>
+            <div class="box1" onclick="window.open('/boss.jsp')">首页</div>
             <div class="box">职位</div>
-            <div class="box">公司</div>
+            <%--<div class="box">公司</div>--%>
             <div class="top1">
                 <c:choose>
                     <c:when test="${userKindRe eq 'cUser'}">
@@ -76,8 +76,8 @@
 
                     </c:when>
                     <c:otherwise>
-                        <div class="box2">上传简历</div>
-                        <div class="box2">我要招聘</div>
+                        <div class="box2" onclick="window.open('/login.jsp')">上传简历</div>
+                        <div class="box2" onclick="window.open('/login.jsp')">我要招聘</div>
                         <div class="box3">
                             <button class="button" onclick="window.open('/register.jsp')">注册</button>
                         </div>
@@ -164,8 +164,8 @@
     <div class="zhaopin">
         <div class="tabbable" id="tabs-602554"><!-- Only required for left/right tabs -->
             <ul class="nav nav-tabs">
-                <li><a contenteditable="true" data-toggle="tab" href="#panel-334288" style="color:rgb(159, 163,172);">嵌入式软件高级工程师</a></li>
-                <li class="active"><a contenteditable="true" data-toggle="tab" href="#panel-816191" style="color:rgb(159, 163,172);">运维实施经理</a></li>
+                <li class="active"><a contenteditable="true" data-toggle="tab" href="#panel-334288" style="color:rgb(159, 163,172);">嵌入式软件高级工程师</a></li>
+                <li ><a contenteditable="true" data-toggle="tab" href="#panel-816191" style="color:rgb(159, 163,172);">运维实施经理</a></li>
                 <li ><a contenteditable="true" data-toggle="tab" href="#panel-816192" style="color:rgb(159, 163,172);">高级后台开发</a></li>
                 <li ><a contenteditable="true" data-toggle="tab" href="#panel-816193" style="color:rgb(159, 163,172);">web前端开发(高级)工程师</a></li>
                 <li ><a contenteditable="true" data-toggle="tab" href="#panel-816194" style="color:rgb(159, 163,172);">高级测试工程师</a></li>

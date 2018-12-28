@@ -13,9 +13,9 @@ public interface IManagerDao {
     //删除用户信息
     public void deleteImfor(String userKind,int id) throws SQLException;
     //查找根据用户名查找用户信息
-    public List findImforUser(String userKind,String username) throws SQLException;
+    public List findImforUser(int startIndex,int pageSize,String userKind,String username) throws SQLException;
     //统计用户数量
-    public int getCount(String userKind) throws SQLException;
+    public int getCount(String userKind,String username) throws SQLException;
     //批量删除用户信息
     public void deleteAll(String userKin,int a[]) throws SQLException;
     //分页查询

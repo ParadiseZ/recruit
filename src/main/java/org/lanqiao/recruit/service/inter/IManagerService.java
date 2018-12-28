@@ -15,10 +15,10 @@ public interface IManagerService {
     public void deleteImfor(String userKind,int id);
 
     //根据用户名查找用户信息
-    public List findImforUser(String userKind,String username);
+    public List findImforUser(int startIndex,int pageSize,String userKind,String username);
 
     //统计用户数量
-    public int countNumOfUser(String userKind);
+    public int countNumOfUser(String userKind,String username);
 
     //批量删除用户信息
     public void deleteAll(String userKind,int a[]);
